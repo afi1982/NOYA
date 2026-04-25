@@ -461,8 +461,15 @@ const DEFAULT_ADDONS = [
   { icon: "♥", name: "פיסול", price: 30 }
 ];
 
+const DEFAULT_GALLERY = [
+  { image: "/gallery/nail-3.jpg", caption: "בנייה ארוכה מאוד • הדפס חיות ופנינים" },
+  { image: "/gallery/nail-2.jpg", caption: "בנייה ארוכה • פרנץ׳ שוקולד ונקודות" },
+  { image: "/gallery/nail-1.jpg", caption: "בנייה קצרה • קישוטי Sanrio תלת-ממד" },
+  { image: "/gallery/nail-4.jpg", caption: "בנייה ארוכה • נייל ארט פרחים עדין" }
+];
+
 async function loadData(){
-  const data = { content: {...DEFAULT_CONTENT}, gallery: [], pricing: DEFAULT_PRICING, addons: DEFAULT_ADDONS };
+  const data = { content: {...DEFAULT_CONTENT}, gallery: DEFAULT_GALLERY, pricing: DEFAULT_PRICING, addons: DEFAULT_ADDONS };
   if (!window.storage) return data;
   try { const c = await window.storage.get('site_content', true); if (c?.value) Object.assign(data.content, JSON.parse(c.value)); } catch(e){}
   try { const g = await window.storage.get('site_gallery', true); if (g?.value) data.gallery = JSON.parse(g.value); } catch(e){}
