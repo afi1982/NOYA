@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Noya Zarfati • סטודיו לציפורניים</title>
+<meta name="description" content="נויה צרפתי - סטודיו לבניית ציפורניים ולק ג'ל. עבודות מדויקות, מחירים הוגנים, יחס אישי." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Heebo:wght@300;400;500;700;900&family=Italianno&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --pink-50:#fdf6f4; --pink-100:#fbe9e7; --pink-200:#f7d3cf; --pink-300:#f0b5b0;
+  --pink-400:#e89691; --pink-500:#d97c79; --rose:#c96570; --burgundy:#6b2737;
+  --cream:#faf3ee; --ink:#2a1a1d; --gold:#c9a87c; --gold-deep:#a8855a;
+  --shadow-soft:0 30px 60px -20px rgba(107,39,55,.15);
+  --shadow-deep:0 40px 80px -20px rgba(107,39,55,.25);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Heebo',sans-serif;background:var(--cream);color:var(--ink);line-height:1.6;overflow-x:hidden;}
+body::before{content:"";position:fixed;inset:0;background-image:radial-gradient(ellipse at 20% 10%,rgba(247,211,207,.35),transparent 50%),radial-gradient(ellipse at 90% 80%,rgba(201,168,124,.15),transparent 55%),radial-gradient(ellipse at 10% 90%,rgba(217,124,121,.12),transparent 50%);pointer-events:none;z-index:-2;}
+body::after{content:"";position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.3 0 0 0 0 0.15 0 0 0 0 0.2 0 0 0 0.08 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");pointer-events:none;opacity:.4;z-index:-1;}
+
+nav{position:fixed;top:0;right:0;left:0;z-index:100;padding:1.2rem 3rem;display:flex;justify-content:space-between;align-items:center;background:rgba(250,243,238,.85);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border-bottom:1px solid rgba(201,168,124,.15);transition:padding .3s ease;}
+nav.scrolled{padding:.8rem 3rem;}
+.nav-logo{font-family:'Italianno',cursive;font-size:2.2rem;color:var(--rose);letter-spacing:.02em;line-height:1;}
+.nav-links{display:flex;gap:2.5rem;list-style:none;}
+.nav-links a{color:var(--ink);text-decoration:none;font-size:.92rem;font-weight:400;letter-spacing:.04em;position:relative;transition:color .25s;}
+.nav-links a::after{content:"";position:absolute;bottom:-6px;right:0;width:0;height:1px;background:var(--rose);transition:width .35s ease;}
+.nav-links a:hover{color:var(--rose);}
+.nav-links a:hover::after{width:100%;}
+.nav-cta{background:var(--ink);color:var(--cream);padding:.65rem 1.6rem;border-radius:100px;font-size:.85rem;letter-spacing:.05em;text-decoration:none;transition:all .3s ease;border:1px solid var(--ink);}
+.nav-cta:hover{background:transparent;color:var(--ink);}
+.menu-toggle{display:none;background:none;border:none;font-size:1.5rem;color:var(--ink);cursor:pointer;}
+
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:8rem 5rem 4rem;position:relative;gap:4rem;}
+.hero-text{position:relative;z-index:2;}
+.hero-tag{display:inline-flex;align-items:center;gap:.6rem;font-size:.8rem;letter-spacing:.25em;color:var(--gold-deep);text-transform:uppercase;margin-bottom:1.5rem;font-weight:500;opacity:0;animation:fadeUp .8s .2s forwards;}
+.hero-tag::before{content:"";width:40px;height:1px;background:var(--gold-deep);}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(3rem,7vw,5.8rem);font-weight:400;line-height:1.05;color:var(--ink);margin-bottom:1.5rem;opacity:0;animation:fadeUp .8s .35s forwards;}
+.hero h1 .accent{font-family:'Italianno',cursive;color:var(--rose);font-size:1.4em;font-weight:400;display:inline-block;line-height:.7;transform:translateY(.1em);}
+.hero p.lead{font-size:1.15rem;color:rgba(42,26,29,.7);max-width:480px;margin-bottom:2.5rem;font-weight:300;line-height:1.7;opacity:0;animation:fadeUp .8s .5s forwards;}
+.hero-ctas{display:flex;gap:1rem;flex-wrap:wrap;opacity:0;animation:fadeUp .8s .65s forwards;}
+.btn{padding:1.1rem 2.4rem;border-radius:100px;text-decoration:none;font-size:.92rem;letter-spacing:.05em;font-weight:500;transition:all .35s ease;display:inline-flex;align-items:center;gap:.6rem;cursor:pointer;border:none;}
+.btn-primary{background:var(--ink);color:var(--cream);border:1px solid var(--ink);}
+.btn-primary:hover{background:var(--rose);border-color:var(--rose);transform:translateY(-2px);box-shadow:0 15px 30px -10px rgba(201,101,112,.5);}
+.btn-secondary{background:transparent;color:var(--ink);border:1px solid var(--ink);}
+.btn-secondary:hover{background:var(--ink);color:var(--cream);}
+.hero-meta{margin-top:3rem;display:flex;gap:2.5rem;flex-wrap:wrap;opacity:0;animation:fadeUp .8s .8s forwards;}
+.hero-meta-item{border-right:1px solid rgba(201,168,124,.4);padding-right:1.2rem;}
+.hero-meta-item .num{font-family:'Playfair Display',serif;font-size:1.8rem;color:var(--rose);display:block;line-height:1;}
+.hero-meta-item .lbl{font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(42,26,29,.6);margin-top:.4rem;display:block;}
+
+.hero-visual{position:relative;display:flex;align-items:center;justify-content:center;height:80vh;}
+.logo-frame{position:relative;width:100%;max-width:480px;aspect-ratio:3/4;display:flex;align-items:center;justify-content:center;}
+.logo-frame::before{content:"";position:absolute;inset:5%;border-radius:50%;background:linear-gradient(135deg,var(--pink-200) 0%,var(--pink-100) 50%,var(--cream) 100%);box-shadow:var(--shadow-deep);z-index:0;}
+.logo-frame::after{content:"";position:absolute;inset:5%;border-radius:50%;border:1px solid rgba(201,168,124,.3);z-index:1;animation:spin 60s linear infinite;}
+.brand-logo{position:relative;z-index:3;text-align:center;padding:2rem;opacity:0;animation:fadeUp 1.2s .8s forwards,float 6s ease-in-out 2s infinite;}
+.brand-logo-top{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem;letter-spacing:.55em;color:var(--gold-deep);margin-bottom:.8rem;padding-right:.55em;}
+.brand-logo-name{font-family:'Italianno',cursive;font-size:clamp(4.5rem,9vw,7rem);color:var(--ink);line-height:.85;letter-spacing:.01em;}
+.brand-logo-name .first{color:var(--rose);display:block;}
+.brand-logo-name .last{display:block;font-size:.75em;margin-top:-.2em;margin-right:1.5em;}
+.brand-logo-divider{width:60%;margin:1.2rem auto;display:flex;align-items:center;justify-content:center;gap:.8rem;}
+.brand-logo-divider .line{flex:1;height:1px;background:linear-gradient(to right,transparent,var(--gold-deep),transparent);}
+.brand-logo-divider .ornament{color:var(--gold-deep);font-size:.8rem;}
+.brand-logo-bottom{font-family:'Heebo',sans-serif;font-weight:300;font-size:.72rem;letter-spacing:.45em;color:var(--ink);text-transform:uppercase;padding-right:.45em;}
+.deco-pearl{position:absolute;border-radius:50%;background:radial-gradient(circle at 30% 30%,#fff,var(--pink-200) 60%,var(--pink-300));box-shadow:inset -2px -2px 4px rgba(201,101,112,.3),0 4px 10px rgba(0,0,0,.1);z-index:2;}
+.deco-pearl.p1{width:24px;height:24px;top:8%;right:18%;animation:float 4s ease-in-out infinite;}
+.deco-pearl.p2{width:16px;height:16px;bottom:15%;left:12%;animation:float 5s ease-in-out 1s infinite;}
+.deco-pearl.p3{width:12px;height:12px;top:25%;left:8%;animation:float 6s ease-in-out 2s infinite;}
+.deco-pearl.p4{width:20px;height:20px;bottom:8%;right:15%;animation:float 4.5s ease-in-out .5s infinite;}
+.deco-sparkle{position:absolute;color:var(--gold);font-size:1.2rem;animation:sparkle 3s ease-in-out infinite;z-index:2;}
+.deco-sparkle.s1{top:12%;left:20%;animation-delay:0s;}
+.deco-sparkle.s2{top:75%;right:18%;animation-delay:1s;font-size:.9rem;}
+.deco-sparkle.s3{top:35%;right:5%;animation-delay:2s;}
+
+section{padding:7rem 5rem;position:relative;}
+.section-header{text-align:center;margin-bottom:4.5rem;}
+.section-eyebrow{font-size:.75rem;letter-spacing:.35em;color:var(--gold-deep);text-transform:uppercase;font-weight:500;margin-bottom:1rem;display:inline-block;}
+.section-eyebrow::before,.section-eyebrow::after{content:"•";margin:0 .8rem;color:var(--rose);}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,4.5vw,3.5rem);font-weight:400;color:var(--ink);line-height:1.1;margin-bottom:1rem;}
+.section-title .ital{font-family:'Italianno',cursive;color:var(--rose);font-size:1.4em;font-weight:400;display:inline-block;line-height:.6;transform:translateY(.08em);}
+.section-sub{max-width:580px;margin:0 auto;color:rgba(42,26,29,.65);font-weight:300;}
+
+.about{background:linear-gradient(135deg,var(--pink-50) 0%,var(--cream) 100%);padding:6rem 5rem;}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;max-width:1200px;margin:0 auto;}
+.about-text h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);font-weight:400;margin-bottom:1.5rem;line-height:1.15;}
+.about-text h2 .ital{font-family:'Italianno',cursive;color:var(--rose);font-size:1.4em;display:inline-block;line-height:.6;transform:translateY(.08em);}
+.about-text p{color:rgba(42,26,29,.7);margin-bottom:1.2rem;font-size:1.05rem;font-weight:300;}
+.about-features{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-top:2rem;}
+.about-feature{padding:1.2rem;background:rgba(255,255,255,.6);border-radius:12px;border:1px solid rgba(201,168,124,.2);}
+.about-feature .icon{font-size:1.4rem;margin-bottom:.5rem;}
+.about-feature .ttl{font-weight:500;font-size:.95rem;margin-bottom:.3rem;}
+.about-feature .dsc{font-size:.82rem;color:rgba(42,26,29,.6);font-weight:300;}
+.about-visual{position:relative;height:500px;display:flex;align-items:center;justify-content:center;}
+.nail-card{position:absolute;background:white;border-radius:16px;padding:1.5rem;box-shadow:var(--shadow-soft);transition:transform .4s ease;}
+.nail-card:hover{transform:translateY(-8px) rotate(0deg) !important;}
+.nail-card.c1{width:220px;top:0;right:10%;transform:rotate(-6deg);z-index:3;}
+.nail-card.c2{width:200px;bottom:8%;left:5%;transform:rotate(8deg);z-index:2;}
+.nail-card.c3{width:180px;top:30%;left:30%;transform:rotate(-3deg);z-index:1;background:var(--pink-100);}
+.nail-svg{width:100%;height:140px;margin-bottom:.8rem;}
+.nail-card-label{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.95rem;color:var(--ink);text-align:center;}
+.nail-card-price{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--rose);text-align:center;margin-top:.3rem;}
+
+.gallery{background:var(--cream);}
+.gallery-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;}
+.gallery-item{position:relative;aspect-ratio:1;border-radius:16px;overflow:hidden;cursor:pointer;background:var(--pink-100);transition:transform .4s ease;}
+.gallery-item:hover{transform:translateY(-5px);}
+.gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease;}
+.gallery-item:hover img{transform:scale(1.08);}
+.gallery-item .overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(42,26,29,.85),transparent 60%);display:flex;align-items:flex-end;padding:1.5rem;opacity:0;transition:opacity .35s ease;}
+.gallery-item:hover .overlay{opacity:1;}
+.gallery-item .overlay-text{color:var(--cream);font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.1rem;}
+.gallery-empty{grid-column:1/-1;text-align:center;padding:4rem 2rem;color:rgba(42,26,29,.5);font-style:italic;border:1px dashed rgba(201,168,124,.4);border-radius:16px;}
+
+.lightbox{position:fixed;inset:0;background:rgba(26,16,18,.92);backdrop-filter:blur(10px);display:none;align-items:center;justify-content:center;z-index:200;padding:2rem;animation:fadeIn .3s;}
+.lightbox.open{display:flex;}
+.lightbox-content{max-width:90vw;max-height:85vh;position:relative;}
+.lightbox img{max-width:100%;max-height:85vh;border-radius:12px;display:block;}
+.lightbox-caption{text-align:center;color:var(--cream);margin-top:1rem;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.2rem;}
+.lightbox-close{position:absolute;top:2rem;left:2rem;background:rgba(255,255,255,.1);color:var(--cream);border:1px solid rgba(255,255,255,.2);width:44px;height:44px;border-radius:50%;font-size:1.5rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .25s;}
+.lightbox-close:hover{background:rgba(255,255,255,.2);}
+
+.pricing{background:var(--ink);color:var(--cream);position:relative;overflow:hidden;}
+.pricing::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 80% 20%,rgba(217,124,121,.15),transparent 40%),radial-gradient(circle at 20% 80%,rgba(201,168,124,.1),transparent 40%);pointer-events:none;}
+.pricing .section-eyebrow{color:var(--gold);}
+.pricing .section-title{color:var(--cream);}
+.pricing .section-title .ital{color:var(--pink-300);}
+.pricing .section-sub{color:rgba(250,243,238,.6);}
+.price-tiers{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;position:relative;z-index:2;}
+.tier{background:rgba(250,243,238,.04);backdrop-filter:blur(10px);border:1px solid rgba(250,243,238,.1);border-radius:24px;padding:2.5rem 2rem;transition:all .4s ease;position:relative;}
+.tier:hover{transform:translateY(-8px);border-color:rgba(217,124,121,.5);background:rgba(250,243,238,.07);}
+.tier.featured{background:linear-gradient(135deg,rgba(217,124,121,.15),rgba(201,168,124,.08));border-color:rgba(217,124,121,.4);}
+.tier.featured::before{content:"מומלץ";position:absolute;top:-12px;right:50%;transform:translateX(50%);background:var(--rose);color:white;padding:.3rem 1rem;border-radius:100px;font-size:.7rem;letter-spacing:.15em;}
+.tier-name{font-family:'Playfair Display',serif;font-size:1.6rem;margin-bottom:.3rem;}
+.tier-len{font-size:.85rem;color:var(--pink-300);letter-spacing:.15em;text-transform:uppercase;margin-bottom:2rem;display:block;}
+.tier-prices{display:flex;flex-direction:column;gap:.8rem;margin-bottom:2rem;padding-bottom:2rem;border-bottom:1px solid rgba(250,243,238,.1);}
+.tier-price-row{display:flex;justify-content:space-between;align-items:baseline;}
+.tier-price-row .lbl{font-size:.85rem;color:rgba(250,243,238,.65);font-weight:300;}
+.tier-price-row .price{font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--cream);}
+.tier-price-row .price .currency{font-size:.65em;color:var(--gold);margin-left:.15em;}
+.tier-includes{list-style:none;}
+.tier-includes li{padding:.5rem 0;font-size:.9rem;color:rgba(250,243,238,.75);font-weight:300;display:flex;align-items:center;gap:.6rem;}
+.tier-includes li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--gold);flex-shrink:0;}
+
+.addons{background:var(--cream);}
+.addons-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;}
+.addon{background:white;border:1px solid rgba(201,168,124,.2);border-radius:16px;padding:1.8rem 1.5rem;text-align:center;transition:all .35s ease;position:relative;overflow:hidden;}
+.addon::before{content:"";position:absolute;top:0;right:0;left:0;height:3px;background:linear-gradient(to right,var(--pink-300),var(--rose),var(--gold));transform:scaleX(0);transform-origin:right;transition:transform .4s ease;}
+.addon:hover{transform:translateY(-5px);box-shadow:var(--shadow-soft);}
+.addon:hover::before{transform:scaleX(1);}
+.addon-icon{width:50px;height:50px;background:var(--pink-100);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-size:1.4rem;}
+.addon-name{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.1rem;margin-bottom:.4rem;}
+.addon-price{font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--rose);}
+.addon-price .currency{font-size:.7em;color:var(--gold-deep);}
+
+.notes{background:linear-gradient(135deg,var(--pink-100),var(--pink-50));padding:5rem 5rem;}
+.notes-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:2rem;}
+.note-card{background:white;border-radius:20px;padding:2.5rem;position:relative;border:1px solid rgba(201,168,124,.25);}
+.note-card .note-mark{position:absolute;top:1.5rem;left:1.5rem;font-family:'Playfair Display',serif;font-size:4rem;color:var(--pink-200);line-height:.5;}
+.note-card h3{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:400;margin-bottom:1rem;color:var(--ink);}
+.note-card h3 .ital{font-family:'Italianno',cursive;color:var(--rose);font-size:1.3em;display:inline-block;line-height:.6;transform:translateY(.08em);}
+.note-card p{color:rgba(42,26,29,.7);font-weight:300;line-height:1.7;}
+.note-card .highlight{color:var(--rose);font-weight:500;}
+
+.contact{background:var(--ink);color:var(--cream);text-align:center;position:relative;overflow:hidden;}
+.contact::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,rgba(217,124,121,.25),transparent 50%);}
+.contact-inner{max-width:700px;margin:0 auto;position:relative;z-index:2;}
+.contact h2{font-family:'Playfair Display',serif;font-size:clamp(2.5rem,5vw,4rem);font-weight:400;line-height:1.05;margin-bottom:1.5rem;}
+.contact h2 .ital{font-family:'Italianno',cursive;color:var(--pink-300);font-size:1.4em;display:inline-block;line-height:.6;transform:translateY(.08em);}
+.contact p.lead{color:rgba(250,243,238,.7);font-size:1.1rem;margin-bottom:2.5rem;font-weight:300;}
+.contact-buttons{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:3rem;}
+.btn-whatsapp{background:#25D366;color:white;border-color:#25D366;}
+.btn-whatsapp:hover{background:#1da851;border-color:#1da851;transform:translateY(-2px);}
+.btn-instagram{background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);color:white;border:none;}
+.btn-instagram:hover{transform:translateY(-2px);}
+.btn-tel{background:transparent;color:var(--cream);border:1px solid rgba(250,243,238,.3);}
+.btn-tel:hover{background:rgba(250,243,238,.1);transform:translateY(-2px);}
+.contact-divider{width:60%;margin:2rem auto;height:1px;background:linear-gradient(to right,transparent,rgba(250,243,238,.3),transparent);}
+.contact-info{display:flex;justify-content:center;gap:3rem;flex-wrap:wrap;font-size:.9rem;color:rgba(250,243,238,.7);}
+.contact-info .item{display:flex;align-items:center;gap:.5rem;}
+.contact-info a{color:inherit;text-decoration:none;transition:color .25s;}
+.contact-info a:hover{color:var(--pink-300);}
+
+footer{padding:2.5rem 5rem;background:#1a1012;color:rgba(250,243,238,.5);text-align:center;font-size:.85rem;border-top:1px solid rgba(250,243,238,.05);position:relative;}
+footer .logo-mini{font-family:'Italianno',cursive;color:var(--pink-300);font-size:1.8rem;margin-bottom:.5rem;line-height:1;}
+footer .admin-link{position:absolute;bottom:.8rem;left:1rem;font-size:.65rem;color:rgba(250,243,238,.2);text-decoration:none;letter-spacing:.1em;}
+footer .admin-link:hover{color:rgba(250,243,238,.5);}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
+@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-12px);}}
+@keyframes spin{to{transform:rotate(360deg);}}
+@keyframes sparkle{0%,100%{opacity:.3;transform:scale(.8);}50%{opacity:1;transform:scale(1.2);}}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease;}
+.reveal.in{opacity:1;transform:translateY(0);}
+
+@media (max-width:968px){
+  nav{padding:1rem 1.5rem;}
+  .nav-links{display:none;}
+  .menu-toggle{display:block;}
+  .hero{grid-template-columns:1fr;padding:7rem 1.5rem 3rem;gap:2rem;text-align:center;}
+  .hero-tag{justify-content:center;}
+  .hero-tag::before{display:none;}
+  .hero-meta{justify-content:center;}
+  .hero-ctas{justify-content:center;}
+  .hero-visual{height:60vh;}
+  section{padding:5rem 1.5rem;}
+  .about{padding:4rem 1.5rem;}
+  .about-grid{grid-template-columns:1fr;gap:3rem;}
+  .about-visual{height:400px;}
+  .gallery-grid{grid-template-columns:repeat(2,1fr);}
+  .price-tiers{grid-template-columns:1fr;}
+  .addons-grid{grid-template-columns:1fr 1fr;}
+  .notes{padding:4rem 1.5rem;}
+  .notes-grid{grid-template-columns:1fr;}
+  .contact-info{gap:1.5rem;flex-direction:column;}
+  footer{padding:2rem 1.5rem;}
+  .about-features{grid-template-columns:1fr;}
+}
+@media (max-width:480px){
+  .gallery-grid{grid-template-columns:1fr;}
+  .addons-grid{grid-template-columns:1fr;}
+  .hero-meta{gap:1.2rem;}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-logo">Noya</div>
+  <ul class="nav-links">
+    <li><a href="#about">אודות</a></li>
+    <li><a href="#gallery">עבודות</a></li>
+    <li><a href="#pricing">מחירון</a></li>
+    <li><a href="#contact">יצירת קשר</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">קבעי תור</a>
+  <button class="menu-toggle" aria-label="פתח תפריט">☰</button>
+</nav>
+
+<section class="hero">
+  <div class="hero-text">
+    <span class="hero-tag" data-content="hero_tag">Nail Studio • סטודיו לציפורניים</span>
+    <h1 data-content="hero_title">
+      ציפורניים<br/>
+      <span class="accent">שמספרות</span><br/>
+      סיפור משלך
+    </h1>
+    <p class="lead" data-content="hero_lead">
+      בניית ציפורניים ולק ג'ל ביד עדינה ומדויקת.
+      כל סט הוא יצירה אישית — מתוכננת בקפידה כדי להתאים לסגנון, לאורח החיים ולאישיות שלך.
+    </p>
+    <div class="hero-ctas">
+      <a href="#contact" class="btn btn-primary">לקביעת תור ←</a>
+      <a href="#pricing" class="btn btn-secondary">למחירון</a>
+    </div>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><span class="num">100%</span><span class="lbl">יחס אישי</span></div>
+      <div class="hero-meta-item"><span class="num">∞</span><span class="lbl">סגנונות</span></div>
+      <div class="hero-meta-item"><span class="num">★</span><span class="lbl">איכות פרימיום</span></div>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="logo-frame">
+      <div class="brand-logo">
+        <div class="brand-logo-top">N · A · I · L · S</div>
+        <div class="brand-logo-name">
+          <span class="first">Noya</span>
+          <span class="last">Zarfati</span>
+        </div>
+        <div class="brand-logo-divider">
+          <span class="line"></span>
+          <span class="ornament">✦</span>
+          <span class="line"></span>
+        </div>
+        <div class="brand-logo-bottom">Nail Artist</div>
+      </div>
+      <span class="deco-pearl p1"></span>
+      <span class="deco-pearl p2"></span>
+      <span class="deco-pearl p3"></span>
+      <span class="deco-pearl p4"></span>
+      <span class="deco-sparkle s1">✦</span>
+      <span class="deco-sparkle s2">✦</span>
+      <span class="deco-sparkle s3">✦</span>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <h2 data-content="about_title">היי, אני <span class="ital">נויה</span></h2>
+      <p data-content="about_p1">אני מתחילה את דרכי בעולם הציפורניים — ועם זה מגיעים סבלנות, דיוק וכמות בלתי נגמרת של תשומת לב לפרטים הקטנים. אני מתייחסת לכל לקוחה כפרויקט אישי, ולכל ציפורן כקנבס קטן.</p>
+      <p data-content="about_p2">אצלי תמצאי אווירה רגועה, חומרים איכותיים, מחירים הוגנים, וזמן — באמת זמן — שהוקדש רק לך.</p>
+      <div class="about-features">
+        <div class="about-feature"><div class="icon">✿</div><div class="ttl">חומרים איכותיים</div><div class="dsc">לק ג'ל מהמותגים המובילים</div></div>
+        <div class="about-feature"><div class="icon">✦</div><div class="ttl">דיוק ועדינות</div><div class="dsc">תשומת לב לכל פרט</div></div>
+        <div class="about-feature"><div class="icon">♡</div><div class="ttl">יחס אישי</div><div class="dsc">כל לקוחה היא לקוחה אחת</div></div>
+        <div class="about-feature"><div class="icon">✧</div><div class="ttl">מחירים הוגנים</div><div class="dsc">איכות גבוהה במחיר נגיש</div></div>
+      </div>
+    </div>
+
+    <div class="about-visual reveal">
+      <div class="nail-card c1">
+        <svg class="nail-svg" viewBox="0 0 100 140" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="g1" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#fbe9e7"/><stop offset="100%" stop-color="#e89691"/></linearGradient></defs>
+          <path d="M 30 130 Q 28 60 35 30 Q 50 5 65 30 Q 72 60 70 130 Z" fill="url(#g1)" stroke="#c96570" stroke-width=".5"/>
+          <ellipse cx="50" cy="125" rx="20" ry="3" fill="#fdf6f4"/>
+          <circle cx="42" cy="50" r="2" fill="#c9a87c" opacity=".7"/>
+          <circle cx="58" cy="65" r="1.5" fill="#c9a87c" opacity=".7"/>
+        </svg>
+        <div class="nail-card-label">קצר אלגנטי</div>
+        <div class="nail-card-price">₪100</div>
+      </div>
+      <div class="nail-card c2">
+        <svg class="nail-svg" viewBox="0 0 100 140" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="g2" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#faf3ee"/><stop offset="100%" stop-color="#f7d3cf"/></linearGradient></defs>
+          <path d="M 28 130 Q 25 50 32 20 Q 50 -5 68 20 Q 75 50 72 130 Z" fill="url(#g2)" stroke="#c96570" stroke-width=".5"/>
+          <ellipse cx="50" cy="125" rx="22" ry="4" fill="#fdf6f4"/>
+          <path d="M 35 30 Q 50 25 65 30" stroke="#c9a87c" stroke-width=".8" fill="none" opacity=".6"/>
+        </svg>
+        <div class="nail-card-label">ארוך קלאסי</div>
+        <div class="nail-card-price">₪150</div>
+      </div>
+      <div class="nail-card c3">
+        <svg class="nail-svg" viewBox="0 0 100 140" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="g3" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#d97c79"/><stop offset="100%" stop-color="#6b2737"/></linearGradient></defs>
+          <path d="M 25 130 Q 22 40 30 10 Q 50 -10 70 10 Q 78 40 75 130 Z" fill="url(#g3)" stroke="#6b2737" stroke-width=".5"/>
+          <ellipse cx="50" cy="125" rx="24" ry="4" fill="#fdf6f4"/>
+          <circle cx="40" cy="40" r="1.2" fill="#fff" opacity=".8"/>
+          <circle cx="60" cy="55" r="1" fill="#fff" opacity=".8"/>
+          <circle cx="50" cy="70" r=".8" fill="#fff" opacity=".8"/>
+        </svg>
+        <div class="nail-card-label">ארוך מאוד דרמטי</div>
+        <div class="nail-card-price">₪200</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="gallery" id="gallery">
+  <div class="section-header reveal">
+    <span class="section-eyebrow">PORTFOLIO</span>
+    <h2 class="section-title">העבודות <span class="ital">שלי</span></h2>
+    <p class="section-sub" data-content="gallery_sub">כל סט הוא סיפור אחר. הצצה לעבודות אחרונות מהסטודיו — בחרי השראה לפגישה הבאה שלנו.</p>
+  </div>
+  <div class="gallery-grid" id="galleryGrid"></div>
+</section>
+
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+  <button class="lightbox-close" onclick="closeLightbox(event)" aria-label="סגור">✕</button>
+  <div class="lightbox-content">
+    <img id="lightboxImg" src="" alt="" />
+    <div class="lightbox-caption" id="lightboxCaption"></div>
+  </div>
+</div>
+
+<section class="pricing" id="pricing">
+  <div class="section-header reveal">
+    <span class="section-eyebrow">PRICE LIST</span>
+    <h2 class="section-title">מחירון <span class="ital">רשמי</span></h2>
+    <p class="section-sub" data-content="pricing_sub">בחרי את האורך שמתאים לך — לק ג'ל בלבד או בנייה מלאה. כל המחירים כוללים את הטיפול המלא.</p>
+  </div>
+  <div class="price-tiers" id="priceTiers"></div>
+</section>
+
+<section class="addons" id="addons">
+  <div class="section-header reveal">
+    <span class="section-eyebrow">EXTRAS</span>
+    <h2 class="section-title">קישוטים <span class="ital">ותוספות</span></h2>
+    <p class="section-sub" data-content="addons_sub">כי לפעמים פשוט סולידי — ולפעמים בא לנו לפרוח. כל קישוט נוסף לטיפול הבסיסי לפי בחירתך.</p>
+  </div>
+  <div class="addons-grid" id="addonsGrid"></div>
+</section>
+
+<section class="notes">
+  <div class="notes-grid">
+    <div class="note-card reveal">
+      <span class="note-mark">"</span>
+      <h3>תיקונים <span class="ital">וטיפול</span></h3>
+      <p data-content="note1">עד <span class="highlight">3 ציפורניים שבורות</span> ינוקו ויוחלפו <span class="highlight">חינם</span>. מעבר לכך — עלות בנייה חדשה. סדקים? לא משלמים על תיקון.</p>
+    </div>
+    <div class="note-card reveal">
+      <span class="note-mark">"</span>
+      <h3>הסרת ציפורניים <span class="ital">מקודמת</span></h3>
+      <p data-content="note2">הסרת ציפורניים שנעשו אצל מישהי אחרת — <span class="highlight">בעלות 20 ₪ בלבד</span>. מנקות אצלי, ועוברות לסט חדש ונקי לחלוטין.</p>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <h2 data-content="contact_title">מוכנה <span class="ital">לפנק</span><br/> את הידיים שלך?</h2>
+    <p class="lead" data-content="contact_lead">קביעת תור פשוטה ומהירה. שלחי הודעה בוואטסאפ או באינסטגרם —<br/>אענה לך בהקדם ונקבע את התור המושלם לך.</p>
+
+    <div class="contact-buttons">
+      <a href="https://wa.me/972543366077" id="whatsappLink" class="btn btn-whatsapp">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.149-.173.198-.297.297-.495.099-.198.05-.372-.025-.521-.074-.149-.669-1.612-.916-2.207-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg>
+        WhatsApp
+      </a>
+      <a href="https://www.instagram.com/noya2478/" id="instagramLink" target="_blank" rel="noopener" class="btn btn-instagram">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        Instagram
+      </a>
+      <a href="tel:0543366077" class="btn btn-tel">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20 15.5c-1.25 0-2.45-.2-3.57-.57-.35-.11-.74-.03-1.02.24l-2.2 2.2c-2.83-1.44-5.15-3.75-6.59-6.58l2.2-2.21c.28-.27.36-.66.25-1.01C8.7 6.45 8.5 5.25 8.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.5c0-.55-.45-1-1-1z"/></svg>
+        054-3366077
+      </a>
+    </div>
+
+    <div class="contact-divider"></div>
+
+    <div class="contact-info">
+      <div class="item"><span>📍</span> ישראל</div>
+      <div class="item"><span>⏰</span> פגישות בתיאום מראש</div>
+      <div class="item"><span>📞</span> <a href="tel:0543366077">054-3366077</a></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="logo-mini">Noya Zarfati</div>
+  <div>סטודיו לציפורניים • Nail Studio</div>
+  <div style="margin-top:.8rem;font-size:.75rem;opacity:.6;">© 2026 כל הזכויות שמורות</div>
+</footer>
+
+<script>
+const DEFAULT_CONTENT = {
+  hero_tag: "Nail Studio • סטודיו לציפורניים",
+  hero_title: 'ציפורניים<br/><span class="accent">שמספרות</span><br/>סיפור משלך',
+  hero_lead: "בניית ציפורניים ולק ג'ל ביד עדינה ומדויקת. כל סט הוא יצירה אישית — מתוכננת בקפידה כדי להתאים לסגנון, לאורח החיים ולאישיות שלך.",
+  about_title: 'היי, אני <span class="ital">נויה</span>',
+  about_p1: "אני מתחילה את דרכי בעולם הציפורניים — ועם זה מגיעים סבלנות, דיוק וכמות בלתי נגמרת של תשומת לב לפרטים הקטנים. אני מתייחסת לכל לקוחה כפרויקט אישי, ולכל ציפורן כקנבס קטן.",
+  about_p2: "אצלי תמצאי אווירה רגועה, חומרים איכותיים, מחירים הוגנים, וזמן — באמת זמן — שהוקדש רק לך.",
+  gallery_sub: "כל סט הוא סיפור אחר. הצצה לעבודות אחרונות מהסטודיו — בחרי השראה לפגישה הבאה שלנו.",
+  pricing_sub: "בחרי את האורך שמתאים לך — לק ג'ל בלבד או בנייה מלאה. כל המחירים כוללים את הטיפול המלא.",
+  addons_sub: "כי לפעמים פשוט סולידי — ולפעמים בא לנו לפרוח. כל קישוט נוסף לטיפול הבסיסי לפי בחירתך.",
+  note1: 'עד <span class="highlight">3 ציפורניים שבורות</span> ינוקו ויוחלפו <span class="highlight">חינם</span>. מעבר לכך — עלות בנייה חדשה. סדקים? לא משלמים על תיקון.',
+  note2: 'הסרת ציפורניים שנעשו אצל מישהי אחרת — <span class="highlight">בעלות 20 ₪ בלבד</span>. מנקות אצלי, ועוברות לסט חדש ונקי לחלוטין.',
+  contact_title: 'מוכנה <span class="ital">לפנק</span><br/> את הידיים שלך?',
+  contact_lead: "קביעת תור פשוטה ומהירה. שלחי הודעה בוואטסאפ או באינסטגרם — אענה לך בהקדם ונקבע את התור המושלם לך.",
+  whatsapp: "972543366077",
+  instagram: "noya2478"
+};
+
+const DEFAULT_PRICING = [
+  { name: "קצר", len: "SHORT LENGTH", gel: 100, build: 200, featured: false, includes: ["הכנת הציפורן בקפידה", "ליטוש וצביעה מקצועית", "מתאים ליום-יום ולעבודה"] },
+  { name: "ארוך", len: "LONG LENGTH", gel: 150, build: 220, featured: true, includes: ["אורך נשי וקלאסי", "צורה מותאמת אישית", "פיניש מבריק לאורך זמן"] },
+  { name: "ארוך מאוד", len: "EXTRA LONG", gel: 200, build: 250, featured: false, includes: ["סטיילינג דרמטי ומרשים", "אידיאלי לאירועים מיוחדים", "חיזוק מלא ועמידות מקסימלית"] }
+];
+
+const DEFAULT_ADDONS = [
+  { icon: "✿", name: "ציורים", price: 30 },
+  { icon: "✧", name: "אבקת פנינה", price: 10 },
+  { icon: "❀", name: "פרנץ'", price: 40 },
+  { icon: "♥", name: "פיסול", price: 30 }
+];
+
+async function loadData(){
+  const data = { content: {...DEFAULT_CONTENT}, gallery: [], pricing: DEFAULT_PRICING, addons: DEFAULT_ADDONS };
+  if (!window.storage) return data;
+  try { const c = await window.storage.get('site_content', true); if (c?.value) Object.assign(data.content, JSON.parse(c.value)); } catch(e){}
+  try { const g = await window.storage.get('site_gallery', true); if (g?.value) data.gallery = JSON.parse(g.value); } catch(e){}
+  try { const p = await window.storage.get('site_pricing', true); if (p?.value) data.pricing = JSON.parse(p.value); } catch(e){}
+  try { const a = await window.storage.get('site_addons', true); if (a?.value) data.addons = JSON.parse(a.value); } catch(e){}
+  return data;
+}
+
+function applyContent(content){
+  document.querySelectorAll('[data-content]').forEach(el => {
+    const key = el.getAttribute('data-content');
+    if (content[key] !== undefined) el.innerHTML = content[key];
+  });
+  if (content.whatsapp){
+    const w = document.getElementById('whatsappLink');
+    if (w) w.href = `https://wa.me/${content.whatsapp.replace(/\D/g,'')}`;
+  }
+  if (content.instagram){
+    const i = document.getElementById('instagramLink');
+    if (i){
+      const handle = content.instagram.replace(/^@/, '').replace(/^https?:\/\/(www\.)?instagram\.com\//, '').replace(/\/$/,'');
+      i.href = `https://instagram.com/${handle}`;
+    }
+  }
+}
+
+function escapeHtml(s){ return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
+
+function renderGallery(items){
+  const grid = document.getElementById('galleryGrid');
+  if (!items || items.length === 0){
+    grid.innerHTML = `<div class="gallery-empty">בקרוב — עבודות יועלו לכאן ✦</div>`;
+    return;
+  }
+  grid.innerHTML = items.map((item, idx) => `
+    <div class="gallery-item reveal" data-idx="${idx}">
+      <img src="${item.image}" alt="${escapeHtml(item.caption)||'עבודה'}" loading="lazy" />
+      ${item.caption ? `<div class="overlay"><div class="overlay-text">${escapeHtml(item.caption)}</div></div>` : ''}
+    </div>
+  `).join('');
+  document.querySelectorAll('.gallery-item').forEach(el => {
+    el.addEventListener('click', () => {
+      const i = parseInt(el.dataset.idx);
+      openLightbox(items[i].image, items[i].caption || '');
+    });
+    observer.observe(el);
+  });
+}
+
+function renderPricing(tiers){
+  const grid = document.getElementById('priceTiers');
+  grid.innerHTML = tiers.map(t => `
+    <div class="tier ${t.featured ? 'featured' : ''} reveal">
+      <div class="tier-name">${escapeHtml(t.name)}</div>
+      <span class="tier-len">${escapeHtml(t.len)}</span>
+      <div class="tier-prices">
+        <div class="tier-price-row"><span class="lbl">לק ג'ל</span><span class="price">${t.gel}<span class="currency">₪</span></span></div>
+        <div class="tier-price-row"><span class="lbl">בנייה</span><span class="price">${t.build}<span class="currency">₪</span></span></div>
+      </div>
+      <ul class="tier-includes">${(t.includes||[]).map(inc => `<li>${escapeHtml(inc)}</li>`).join('')}</ul>
+    </div>
+  `).join('');
+  document.querySelectorAll('.tier.reveal').forEach(r => observer.observe(r));
+}
+
+function renderAddons(items){
+  const grid = document.getElementById('addonsGrid');
+  grid.innerHTML = items.map(a => `
+    <div class="addon reveal">
+      <div class="addon-icon">${escapeHtml(a.icon)}</div>
+      <div class="addon-name">${escapeHtml(a.name)}</div>
+      <div class="addon-price">${a.price}<span class="currency">₪</span></div>
+    </div>
+  `).join('');
+  document.querySelectorAll('.addon.reveal').forEach(r => observer.observe(r));
+}
+
+function openLightbox(src, caption){
+  const lb = document.getElementById('lightbox');
+  document.getElementById('lightboxImg').src = src;
+  document.getElementById('lightboxCaption').textContent = caption || '';
+  lb.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox(e){
+  if (e && e.target.closest('.lightbox-content') && !e.target.classList.contains('lightbox-close')) return;
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 30) nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
+});
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting){
+      setTimeout(() => e.target.classList.add('in'), i * 80);
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.15 });
+document.querySelectorAll('.reveal').forEach(r => observer.observe(r));
+
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const id = a.getAttribute('href');
+    if (id.length > 1){
+      e.preventDefault();
+      document.querySelector(id)?.scrollIntoView({behavior:'smooth', block:'start'});
+    }
+  });
+});
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+(async () => {
+  const data = await loadData();
+  applyContent(data.content);
+  renderGallery(data.gallery);
+  renderPricing(data.pricing);
+  renderAddons(data.addons);
+})();
+</script>
+
+</body>
+</html>
