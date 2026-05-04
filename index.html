@@ -2,7 +2,12 @@
 <html class="dark" lang="he" dir="rtl">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no" />
+<meta name="theme-color" content="#1e0f12" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="Noya Nails" />
+<meta name="mobile-web-app-capable" content="yes" />
 <title>Noya Nails • Velvet Venom — סטודיו לציפורניים</title>
 <meta name="description" content="נויה צרפתי - סטודיו לבניית ציפורניים ולק ג'ל. אסתטיקה גותית-יוקרתית, עבודות מדויקות, יחס אישי." />
 <link rel="icon" type="image/jpeg" href="assets/logo.jpg" />
@@ -49,10 +54,12 @@
   };
 </script>
 <style>
-  *{box-sizing:border-box;}
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
   html{scroll-behavior:smooth;}
-  body{font-family:'Be Vietnam Pro','Heebo',sans-serif;background:#1e0f12;color:#f9dbdf;}
+  body{font-family:'Be Vietnam Pro','Heebo',sans-serif;background:#1e0f12;color:#f9dbdf;-webkit-font-smoothing:antialiased;overscroll-behavior-y:none;}
   .material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;}
+  .safe-bottom{padding-bottom:max(.5rem,env(safe-area-inset-bottom));}
+  .safe-top{padding-top:max(.5rem,env(safe-area-inset-top));}
 
   .lace-pattern{
     background-image:radial-gradient(circle at 2px 2px, rgba(201,101,112,.10) 1px, transparent 0);
@@ -146,19 +153,29 @@
   /* RTL fix for Tailwind utilities that assume LTR for nav-link underline */
   [dir="rtl"] .nav-link::after{right:auto;left:0;}
 
-  @media (max-width: 968px){
+  /* Bottom nav app-style states */
+  .bnav{color:rgba(249,219,223,.55);}
+  .bnav:active{transform:scale(.92);}
+  .bnav.active{color:#ffb2b8;background:rgba(201,101,112,.18);box-shadow:inset 0 0 0 1px rgba(201,101,112,.35),0 0 14px rgba(201,101,112,.25);}
+  .bnav.active .material-symbols-outlined{font-variation-settings:'FILL' 1,'wght' 500;}
+
+  /* App-feel touches */
+  @media (max-width:768px){
     .hero-grid{grid-template-columns:1fr !important;}
+    section{scroll-margin-top:72px;}
   }
+  /* Hide horizontal scroll & smooth momentum on iOS */
+  html,body{overflow-x:hidden;-webkit-overflow-scrolling:touch;}
 </style>
 </head>
-<body class="bg-background text-on-surface min-h-screen pb-24 lace-pattern">
+<body id="top" class="bg-background text-on-surface min-h-screen pb-24 md:pb-12 lace-pattern">
 
 <!-- Top App Bar -->
-<header id="topbar" class="nav-bar-blur sticky top-0 z-50 border-b border-primary-rose/30 shadow-[0_0_25px_rgba(201,101,112,.18)] transition-all">
-  <div class="max-w-[1280px] mx-auto px-6 py-3 flex justify-between items-center gap-4">
-    <a href="#" class="flex items-center gap-3 group">
-      <img src="assets/logo.jpg" alt="Noya Nails" class="h-11 w-11 object-cover rounded-full border border-primary-rose/60 group-hover:border-primary shadow-[0_0_12px_rgba(201,101,112,.5)] transition-all"/>
-      <span class="font-display font-black text-xl text-primary tracking-tight uppercase italic hidden sm:inline">Noya Nails</span>
+<header id="topbar" class="nav-bar-blur sticky top-0 z-50 border-b border-primary-rose/25 shadow-[0_2px_15px_rgba(0,0,0,.4)] transition-all safe-top">
+  <div class="max-w-[1280px] mx-auto px-4 md:px-6 py-2.5 md:py-3 flex justify-between items-center gap-3">
+    <a href="#" class="flex items-center gap-2.5 group">
+      <img src="assets/logo.jpg" alt="Noya Nails" class="h-9 w-9 md:h-10 md:w-10 object-cover rounded-full border border-primary-rose/50 group-hover:border-primary shadow-[0_0_10px_rgba(201,101,112,.4)] transition-all"/>
+      <span class="font-display font-black text-base md:text-xl text-primary tracking-tight uppercase italic">Noya Nails</span>
     </a>
     <nav class="hidden md:flex items-center gap-7 text-[.92rem] font-medium">
       <a href="#about" class="nav-link">אודות</a>
@@ -167,117 +184,129 @@
       <a href="#addons" class="nav-link">תוספות</a>
       <a href="#contact" class="nav-link">יצירת קשר</a>
     </nav>
-    <div class="flex items-center gap-3">
-      <a href="#contact" class="btn-primary-luxe px-5 py-2 rounded-full text-[.82rem] font-semibold tracking-wider uppercase">קבעי תור</a>
-    </div>
+    <a href="#contact" class="btn-primary-luxe px-4 md:px-5 py-1.5 md:py-2 rounded-full text-[.72rem] md:text-[.82rem] font-semibold tracking-wider uppercase whitespace-nowrap">קבעי תור</a>
   </div>
 </header>
 
-<main class="max-w-[1280px] mx-auto px-5 md:px-8 mt-8">
+<main class="max-w-[1280px] mx-auto px-4 md:px-8 mt-4 md:mt-8">
 
   <!-- Hero / Velvet Venom -->
-  <section class="relative overflow-hidden rounded-2xl border-2 border-primary-rose/30 bg-surface-container-low leopard-texture p-7 md:p-12 mb-14 shadow-[inset_0_0_60px_rgba(0,0,0,.55)]">
-    <div class="absolute -top-24 -left-24 w-72 h-72 rounded-full bg-primary-rose/15 blur-3xl"></div>
-    <div class="absolute -bottom-24 -right-24 w-80 h-80 rounded-full bg-secondary-gold/10 blur-3xl"></div>
-    <span class="deco-sparkle" style="top:12%;left:14%;">✦</span>
-    <span class="deco-sparkle" style="top:70%;right:10%;animation-delay:1.2s;">✦</span>
-    <span class="deco-sparkle" style="top:30%;right:22%;animation-delay:2s;font-size:.8rem;">✦</span>
+  <section class="relative overflow-hidden rounded-3xl border border-primary-rose/25 bg-surface-container-low leopard-texture px-5 py-10 md:px-12 md:py-14 mb-10 md:mb-14 shadow-[inset_0_0_60px_rgba(0,0,0,.55)]">
+    <div class="absolute -top-24 -left-24 w-72 h-72 rounded-full bg-primary-rose/15 blur-3xl pointer-events-none"></div>
+    <div class="absolute -bottom-24 -right-24 w-80 h-80 rounded-full bg-secondary-gold/10 blur-3xl pointer-events-none"></div>
+    <span class="deco-sparkle" style="top:8%;left:12%;">✦</span>
+    <span class="deco-sparkle" style="top:72%;right:8%;animation-delay:1.2s;">✦</span>
+    <span class="deco-sparkle" style="top:30%;right:20%;animation-delay:2s;font-size:.8rem;">✦</span>
 
-    <div class="relative z-10 hero-grid grid md:grid-cols-2 gap-10 items-center">
-      <div class="text-right">
-        <span class="inline-block font-body text-[.72rem] tracking-[.35em] uppercase text-secondary mb-4" data-content="hero_tag">Velvet Venom • סטודיו לציפורניים</span>
-        <h1 class="font-display font-black text-4xl md:text-6xl leading-[1.05] text-on-surface mb-5">
+    <div class="relative z-10 hero-grid grid md:grid-cols-[1.15fr_1fr] gap-8 md:gap-10 items-center">
+      <div class="text-center md:text-right">
+        <!-- Subtle logo medallion above the title (mobile + desktop) -->
+        <div class="flex justify-center md:justify-start mb-5">
+          <div class="relative inline-flex items-center justify-center">
+            <div class="absolute inset-0 rounded-full bg-primary-rose/20 blur-xl"></div>
+            <div class="absolute inset-[-6px] rounded-full border border-secondary-gold/25 ring-rotate"></div>
+            <img src="assets/logo.jpg" alt="Noya Nails" class="relative w-14 h-14 md:w-16 md:h-16 rounded-full object-cover border border-primary-rose/40 shadow-[0_0_18px_rgba(201,101,112,.45)]"/>
+          </div>
+        </div>
+
+        <span class="inline-block font-body text-[.65rem] md:text-[.72rem] tracking-[.35em] uppercase text-secondary mb-3" data-content="hero_tag">Velvet Venom • סטודיו לציפורניים</span>
+        <h1 class="font-display font-black text-3xl md:text-6xl leading-[1.08] text-on-surface mb-4">
           <span data-content="hero_title">
             ציפורניים<br/>
-            <span class="accent-script text-7xl md:text-8xl block leading-[.7] my-2">שמספרות</span>
+            <span class="accent-script text-6xl md:text-8xl block leading-[.65] my-1">שמספרות</span>
             סיפור משלך
           </span>
         </h1>
-        <p class="font-body text-base md:text-lg text-on-surface-variant max-w-xl leading-relaxed mb-7" data-content="hero_lead">
-          בניית ציפורניים ולק ג'ל ביד עדינה ומדויקת. כל סט הוא יצירה אישית — מתוכננת בקפידה כדי להתאים לסגנון, לאורח החיים ולאישיות שלך.
+        <p class="font-body text-sm md:text-lg text-on-surface-variant max-w-xl mx-auto md:mx-0 leading-relaxed mb-6" data-content="hero_lead">
+          בניית ציפורניים ולק ג'ל ביד עדינה ומדויקת. כל סט הוא יצירה אישית — מתוכננת בקפידה כדי להתאים לסגנון, לאישיות ולאורח החיים שלך.
         </p>
-        <div class="flex flex-wrap gap-3 mb-9">
-          <a href="#contact" class="btn-primary-luxe px-7 py-3 rounded-full text-sm font-semibold tracking-wider uppercase inline-flex items-center gap-2">
-            <span class="material-symbols-outlined text-[18px]">spa</span>
+        <div class="flex flex-wrap justify-center md:justify-start gap-2.5 mb-7">
+          <a href="#contact" class="btn-primary-luxe px-5 md:px-7 py-2.5 md:py-3 rounded-full text-xs md:text-sm font-semibold tracking-wider uppercase inline-flex items-center gap-2">
+            <span class="material-symbols-outlined text-[16px] md:text-[18px]">spa</span>
             לקביעת תור
           </a>
-          <a href="#pricing" class="btn-outline-gold px-7 py-3 rounded-full text-sm font-semibold tracking-wider uppercase inline-flex items-center gap-2">
-            <span class="material-symbols-outlined text-[18px]">menu_book</span>
+          <a href="#pricing" class="btn-outline-gold px-5 md:px-7 py-2.5 md:py-3 rounded-full text-xs md:text-sm font-semibold tracking-wider uppercase inline-flex items-center gap-2">
+            <span class="material-symbols-outlined text-[16px] md:text-[18px]">menu_book</span>
             למחירון
           </a>
         </div>
-        <div class="flex flex-wrap gap-7 pt-6 border-t border-primary-rose/15">
-          <div class="border-r border-primary-rose/25 pr-5">
-            <div class="font-display font-bold text-2xl text-primary leading-none">100%</div>
-            <div class="text-[.7rem] tracking-[.2em] uppercase text-on-surface-variant mt-2">יחס אישי</div>
+        <div class="flex flex-wrap justify-center md:justify-start gap-5 md:gap-7 pt-5 md:pt-6 border-t border-primary-rose/15">
+          <div class="border-r border-primary-rose/25 pr-3 md:pr-5">
+            <div class="font-display font-bold text-xl md:text-2xl text-primary leading-none">100%</div>
+            <div class="text-[.65rem] md:text-[.7rem] tracking-[.2em] uppercase text-on-surface-variant mt-1.5 md:mt-2">יחס אישי</div>
           </div>
-          <div class="border-r border-primary-rose/25 pr-5">
-            <div class="font-display font-bold text-2xl text-primary leading-none">∞</div>
-            <div class="text-[.7rem] tracking-[.2em] uppercase text-on-surface-variant mt-2">סגנונות</div>
+          <div class="border-r border-primary-rose/25 pr-3 md:pr-5">
+            <div class="font-display font-bold text-xl md:text-2xl text-primary leading-none">∞</div>
+            <div class="text-[.65rem] md:text-[.7rem] tracking-[.2em] uppercase text-on-surface-variant mt-1.5 md:mt-2">סגנונות</div>
           </div>
-          <div class="pr-5">
-            <div class="font-display font-bold text-2xl text-secondary leading-none">★</div>
-            <div class="text-[.7rem] tracking-[.2em] uppercase text-on-surface-variant mt-2">איכות פרימיום</div>
+          <div class="pr-3 md:pr-5">
+            <div class="font-display font-bold text-xl md:text-2xl text-secondary leading-none">★</div>
+            <div class="text-[.65rem] md:text-[.7rem] tracking-[.2em] uppercase text-on-surface-variant mt-1.5 md:mt-2">איכות פרימיום</div>
           </div>
         </div>
       </div>
 
-      <div class="flex justify-center">
-        <div class="relative w-64 h-64 md:w-[22rem] md:h-[22rem] float-slow">
-          <div class="absolute inset-0 bg-primary-rose/25 rounded-full blur-3xl"></div>
-          <div class="absolute inset-2 rounded-full border border-secondary-gold/30 ring-rotate"></div>
-          <div class="absolute inset-6 rounded-full border border-primary-rose/20 hero-orb"></div>
-          <div class="relative z-10 w-full h-full rounded-3xl overflow-hidden border-2 border-primary-rose/40 shadow-[0_0_50px_rgba(201,101,112,.5)]">
-            <img src="assets/logo.jpg" alt="Noya Nails Logo" class="w-full h-full object-cover"/>
+      <!-- Decorative emblem — desktop only, smaller and integrated -->
+      <div class="hidden md:flex justify-center">
+        <div class="relative w-64 h-64 lg:w-72 lg:h-72 float-slow">
+          <div class="absolute inset-0 bg-primary-rose/20 rounded-full blur-2xl"></div>
+          <div class="absolute inset-0 rounded-full border border-secondary-gold/30 ring-rotate"></div>
+          <div class="absolute inset-4 rounded-full border border-primary-rose/15"></div>
+          <div class="absolute inset-0 flex items-center justify-center">
+            <div class="relative w-[68%] h-[68%] rounded-full overflow-hidden border border-primary-rose/30 shadow-[0_0_30px_rgba(201,101,112,.35)]">
+              <img src="assets/logo.jpg" alt="Noya Nails Logo" class="w-full h-full object-cover"/>
+            </div>
           </div>
+          <span class="absolute top-2 right-1/2 translate-x-1/2 text-secondary text-xs animate-pulse">✦</span>
+          <span class="absolute bottom-2 right-1/2 translate-x-1/2 text-secondary text-xs animate-pulse">✦</span>
         </div>
       </div>
     </div>
   </section>
 
   <!-- About -->
-  <section id="about" class="mb-16">
-    <div class="grid md:grid-cols-2 gap-10 items-center">
+  <section id="about" class="mb-12 md:mb-16">
+    <div class="grid md:grid-cols-2 gap-7 md:gap-10 items-center">
       <div class="reveal">
-        <span class="font-body text-[.72rem] tracking-[.35em] uppercase text-secondary">— Brand DNA</span>
-        <h2 class="font-display font-extrabold text-3xl md:text-5xl mt-3 mb-5 leading-tight">
-          <span data-content="about_title">היי, אני <span class="accent-script text-6xl">נויה</span></span>
+        <span class="font-body text-[.65rem] md:text-[.72rem] tracking-[.35em] uppercase text-secondary">— Brand DNA</span>
+        <h2 class="font-display font-extrabold text-2xl md:text-5xl mt-2 mb-4 leading-tight">
+          <span data-content="about_title">היי, אני <span class="accent-script text-5xl md:text-6xl">נויה</span></span>
         </h2>
-        <p class="text-on-surface-variant text-base md:text-lg leading-relaxed mb-4" data-content="about_p1">
+        <p class="text-on-surface-variant text-sm md:text-lg leading-relaxed mb-3" data-content="about_p1">
           אני מתחילה את דרכי בעולם הציפורניים — ועם זה מגיעים סבלנות, דיוק וכמות בלתי נגמרת של תשומת לב לפרטים הקטנים. אני מתייחסת לכל לקוחה כפרויקט אישי, ולכל ציפורן כקנבס קטן.
         </p>
-        <p class="text-on-surface-variant text-base md:text-lg leading-relaxed mb-7" data-content="about_p2">
+        <p class="text-on-surface-variant text-sm md:text-lg leading-relaxed mb-5 md:mb-7" data-content="about_p2">
           אצלי תמצאי אווירה רגועה, חומרים איכותיים, מחירים הוגנים, וזמן — באמת זמן — שהוקדש רק לך.
         </p>
-        <div class="grid grid-cols-2 gap-3">
-          <div class="addon-card rounded-xl p-4">
-            <div class="material-symbols-outlined text-secondary mb-2">diamond</div>
-            <div class="font-semibold text-on-surface mb-1">חומרים איכותיים</div>
-            <div class="text-xs text-on-surface-variant">לק ג'ל מהמותגים המובילים</div>
+        <div class="grid grid-cols-2 gap-2.5 md:gap-3">
+          <div class="addon-card rounded-2xl p-3.5 md:p-4">
+            <div class="material-symbols-outlined text-secondary mb-1.5 text-[20px] md:text-[24px]">diamond</div>
+            <div class="font-semibold text-on-surface text-sm mb-0.5">חומרים איכותיים</div>
+            <div class="text-[.7rem] md:text-xs text-on-surface-variant">לק ג'ל מהמותגים המובילים</div>
           </div>
-          <div class="addon-card rounded-xl p-4">
-            <div class="material-symbols-outlined text-secondary mb-2">auto_awesome</div>
-            <div class="font-semibold text-on-surface mb-1">דיוק ועדינות</div>
-            <div class="text-xs text-on-surface-variant">תשומת לב לכל פרט</div>
+          <div class="addon-card rounded-2xl p-3.5 md:p-4">
+            <div class="material-symbols-outlined text-secondary mb-1.5 text-[20px] md:text-[24px]">auto_awesome</div>
+            <div class="font-semibold text-on-surface text-sm mb-0.5">דיוק ועדינות</div>
+            <div class="text-[.7rem] md:text-xs text-on-surface-variant">תשומת לב לכל פרט</div>
           </div>
-          <div class="addon-card rounded-xl p-4">
-            <div class="material-symbols-outlined text-secondary mb-2">favorite</div>
-            <div class="font-semibold text-on-surface mb-1">יחס אישי</div>
-            <div class="text-xs text-on-surface-variant">כל לקוחה היא לקוחה אחת</div>
+          <div class="addon-card rounded-2xl p-3.5 md:p-4">
+            <div class="material-symbols-outlined text-secondary mb-1.5 text-[20px] md:text-[24px]">favorite</div>
+            <div class="font-semibold text-on-surface text-sm mb-0.5">יחס אישי</div>
+            <div class="text-[.7rem] md:text-xs text-on-surface-variant">כל לקוחה היא לקוחה אחת</div>
           </div>
-          <div class="addon-card rounded-xl p-4">
-            <div class="material-symbols-outlined text-secondary mb-2">verified</div>
-            <div class="font-semibold text-on-surface mb-1">מחירים הוגנים</div>
-            <div class="text-xs text-on-surface-variant">איכות גבוהה במחיר נגיש</div>
+          <div class="addon-card rounded-2xl p-3.5 md:p-4">
+            <div class="material-symbols-outlined text-secondary mb-1.5 text-[20px] md:text-[24px]">verified</div>
+            <div class="font-semibold text-on-surface text-sm mb-0.5">מחירים הוגנים</div>
+            <div class="text-[.7rem] md:text-xs text-on-surface-variant">איכות גבוהה במחיר נגיש</div>
           </div>
         </div>
       </div>
 
-      <div class="reveal">
-        <div class="relative aspect-square rounded-2xl overflow-hidden border-2 border-primary-rose/30 shadow-[0_30px_80px_-20px_rgba(0,0,0,.6)] leopard-texture">
+      <div class="reveal hidden md:block">
+        <div class="relative aspect-square rounded-3xl overflow-hidden border border-primary-rose/25 shadow-[0_30px_80px_-20px_rgba(0,0,0,.6)] leopard-texture">
           <div class="absolute inset-0 bg-gradient-to-tr from-primary-rose/20 via-transparent to-secondary-gold/15"></div>
           <div class="absolute inset-0 flex items-center justify-center">
-            <div class="relative w-3/4 h-3/4 rounded-2xl overflow-hidden border border-primary-rose/40 glow-soft">
+            <div class="relative w-2/3 h-2/3 rounded-full overflow-hidden border border-primary-rose/35 glow-soft">
               <img src="assets/logo.jpg" alt="Noya Nails" class="w-full h-full object-cover"/>
             </div>
           </div>
@@ -292,86 +321,86 @@
   </section>
 
   <!-- Gallery -->
-  <section id="gallery" class="mb-16 border-t border-primary-rose/15 pt-14">
-    <div class="flex flex-wrap items-end justify-between mb-8 gap-4">
+  <section id="gallery" class="mb-12 md:mb-16 border-t border-primary-rose/15 pt-10 md:pt-14">
+    <div class="flex flex-wrap items-end justify-between mb-6 md:mb-8 gap-3">
       <div>
-        <span class="font-body text-[.72rem] tracking-[.35em] uppercase text-secondary">— Portfolio</span>
-        <h2 class="font-display font-extrabold text-3xl md:text-4xl text-on-surface mt-2">העבודות <span class="accent-script text-5xl">שלי</span></h2>
+        <span class="font-body text-[.65rem] md:text-[.72rem] tracking-[.35em] uppercase text-secondary">— Portfolio</span>
+        <h2 class="font-display font-extrabold text-2xl md:text-4xl text-on-surface mt-2">העבודות <span class="accent-script text-4xl md:text-5xl">שלי</span></h2>
       </div>
-      <p class="text-on-surface-variant max-w-md text-sm" data-content="gallery_sub">כל סט הוא סיפור אחר. הצצה לעבודות אחרונות מהסטודיו — בחרי השראה לפגישה הבאה שלנו.</p>
+      <p class="text-on-surface-variant max-w-md text-xs md:text-sm" data-content="gallery_sub">כל סט הוא סיפור אחר. הצצה לעבודות אחרונות מהסטודיו — בחרי השראה לפגישה הבאה שלנו.</p>
     </div>
-    <div id="galleryGrid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4"></div>
+    <div id="galleryGrid" class="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4"></div>
   </section>
 
   <!-- Pricing -->
-  <section id="pricing" class="relative mb-16 rounded-2xl border-2 border-primary-rose/25 bg-surface-container-low p-8 md:p-12 overflow-hidden">
+  <section id="pricing" class="relative mb-12 md:mb-16 rounded-3xl border border-primary-rose/25 bg-surface-container-low px-5 py-10 md:p-12 overflow-hidden">
     <div class="absolute inset-0 lace-pattern opacity-50 pointer-events-none"></div>
     <div class="absolute -top-32 right-0 w-96 h-96 rounded-full bg-primary-rose/10 blur-3xl pointer-events-none"></div>
     <div class="relative z-10">
-      <div class="text-center mb-10 reveal">
-        <span class="font-body text-[.72rem] tracking-[.35em] uppercase text-secondary">— Price List</span>
-        <h2 class="font-display font-extrabold text-3xl md:text-5xl text-on-surface mt-3">מחירון <span class="accent-script text-6xl">רשמי</span></h2>
-        <div class="ornament-divider max-w-xs mx-auto mt-4"><span class="line"></span><span class="gem">✦</span><span class="line"></span></div>
-        <p class="text-on-surface-variant max-w-xl mx-auto mt-4 text-sm md:text-base" data-content="pricing_sub">בחרי את האורך שמתאים לך — לק ג'ל בלבד או בנייה מלאה. כל המחירים כוללים את הטיפול המלא.</p>
+      <div class="text-center mb-8 md:mb-10 reveal">
+        <span class="font-body text-[.65rem] md:text-[.72rem] tracking-[.35em] uppercase text-secondary">— Price List</span>
+        <h2 class="font-display font-extrabold text-2xl md:text-5xl text-on-surface mt-2">מחירון <span class="accent-script text-5xl md:text-6xl">רשמי</span></h2>
+        <div class="ornament-divider max-w-[12rem] md:max-w-xs mx-auto mt-3"><span class="line"></span><span class="gem">✦</span><span class="line"></span></div>
+        <p class="text-on-surface-variant max-w-xl mx-auto mt-3 md:mt-4 text-xs md:text-base" data-content="pricing_sub">בחרי את האורך שמתאים לך — לק ג'ל בלבד או בנייה מלאה. כל המחירים כוללים את הטיפול המלא.</p>
       </div>
-      <div id="priceTiers" class="grid md:grid-cols-3 gap-5"></div>
+      <div id="priceTiers" class="grid md:grid-cols-3 gap-4 md:gap-5"></div>
     </div>
   </section>
 
   <!-- Addons -->
-  <section id="addons" class="mb-16">
-    <div class="text-center mb-10 reveal">
-      <span class="font-body text-[.72rem] tracking-[.35em] uppercase text-secondary">— Extras</span>
-      <h2 class="font-display font-extrabold text-3xl md:text-4xl text-on-surface mt-2">קישוטים <span class="accent-script text-5xl">ותוספות</span></h2>
-      <p class="text-on-surface-variant max-w-xl mx-auto mt-3 text-sm" data-content="addons_sub">כי לפעמים פשוט סולידי — ולפעמים בא לנו לפרוח. כל קישוט נוסף לטיפול הבסיסי לפי בחירתך.</p>
+  <section id="addons" class="mb-12 md:mb-16">
+    <div class="text-center mb-7 md:mb-10 reveal">
+      <span class="font-body text-[.65rem] md:text-[.72rem] tracking-[.35em] uppercase text-secondary">— Extras</span>
+      <h2 class="font-display font-extrabold text-2xl md:text-4xl text-on-surface mt-2">קישוטים <span class="accent-script text-4xl md:text-5xl">ותוספות</span></h2>
+      <p class="text-on-surface-variant max-w-xl mx-auto mt-2 md:mt-3 text-xs md:text-sm px-4" data-content="addons_sub">כי לפעמים פשוט סולידי — ולפעמים בא לנו לפרוח. כל קישוט נוסף לטיפול הבסיסי לפי בחירתך.</p>
     </div>
-    <div id="addonsGrid" class="grid grid-cols-2 md:grid-cols-4 gap-4"></div>
+    <div id="addonsGrid" class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4"></div>
   </section>
 
   <!-- Notes -->
-  <section class="mb-16">
-    <div class="grid md:grid-cols-2 gap-5">
-      <div class="reveal relative bg-surface-container-high border-r-4 border-primary-rose rounded-xl p-7">
-        <span class="absolute top-4 left-5 font-display text-6xl text-primary-rose/30 leading-none">"</span>
-        <h3 class="font-display font-bold text-2xl mb-3">תיקונים <span class="accent-script text-4xl">וטיפול</span></h3>
-        <p class="text-on-surface-variant leading-relaxed" data-content="note1">עד <span class="text-primary font-semibold">3 ציפורניים שבורות</span> ינוקו ויוחלפו <span class="text-primary font-semibold">חינם</span>. מעבר לכך — עלות בנייה חדשה. סדקים? לא משלמים על תיקון.</p>
+  <section class="mb-12 md:mb-16">
+    <div class="grid md:grid-cols-2 gap-4 md:gap-5">
+      <div class="reveal relative bg-surface-container-high border-r-4 border-primary-rose rounded-2xl p-5 md:p-7">
+        <span class="absolute top-3 left-4 font-display text-5xl md:text-6xl text-primary-rose/30 leading-none">"</span>
+        <h3 class="font-display font-bold text-xl md:text-2xl mb-2 md:mb-3">תיקונים <span class="accent-script text-3xl md:text-4xl">וטיפול</span></h3>
+        <p class="text-on-surface-variant text-sm md:text-base leading-relaxed" data-content="note1">עד <span class="text-primary font-semibold">3 ציפורניים שבורות</span> ינוקו ויוחלפו <span class="text-primary font-semibold">חינם</span>. מעבר לכך — עלות בנייה חדשה. סדקים? לא משלמים על תיקון.</p>
       </div>
-      <div class="reveal relative bg-surface-container-high border-r-4 border-secondary-gold rounded-xl p-7">
-        <span class="absolute top-4 left-5 font-display text-6xl text-secondary-gold/30 leading-none">"</span>
-        <h3 class="font-display font-bold text-2xl mb-3">הסרת ציפורניים <span class="accent-script text-4xl">מקודמת</span></h3>
-        <p class="text-on-surface-variant leading-relaxed" data-content="note2">הסרת ציפורניים שנעשו אצל מישהי אחרת — <span class="text-primary font-semibold">בעלות 20 ₪ בלבד</span>. מנקות אצלי, ועוברות לסט חדש ונקי לחלוטין.</p>
+      <div class="reveal relative bg-surface-container-high border-r-4 border-secondary-gold rounded-2xl p-5 md:p-7">
+        <span class="absolute top-3 left-4 font-display text-5xl md:text-6xl text-secondary-gold/30 leading-none">"</span>
+        <h3 class="font-display font-bold text-xl md:text-2xl mb-2 md:mb-3">הסרת ציפורניים <span class="accent-script text-3xl md:text-4xl">מקודמת</span></h3>
+        <p class="text-on-surface-variant text-sm md:text-base leading-relaxed" data-content="note2">הסרת ציפורניים שנעשו אצל מישהי אחרת — <span class="text-primary font-semibold">בעלות 20 ₪ בלבד</span>. מנקות אצלי, ועוברות לסט חדש ונקי לחלוטין.</p>
       </div>
     </div>
   </section>
 
   <!-- Contact -->
-  <section id="contact" class="relative mb-12 rounded-2xl border-2 border-primary-rose/30 overflow-hidden p-8 md:p-14 leopard-texture">
+  <section id="contact" class="relative mb-10 md:mb-12 rounded-3xl border border-primary-rose/30 overflow-hidden px-5 py-10 md:p-14 leopard-texture">
     <div class="absolute inset-0 bg-gradient-to-tr from-surface-container-low via-background to-surface-container-low"></div>
     <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(201,101,112,.25),transparent_50%)]"></div>
     <div class="relative z-10 max-w-2xl mx-auto text-center">
-      <span class="font-body text-[.72rem] tracking-[.35em] uppercase text-secondary">— Booking</span>
-      <h2 class="font-display font-extrabold text-3xl md:text-5xl text-on-surface mt-3 leading-tight">
-        <span data-content="contact_title">מוכנה <span class="accent-script text-6xl">לפנק</span><br/> את הידיים שלך?</span>
+      <span class="font-body text-[.65rem] md:text-[.72rem] tracking-[.35em] uppercase text-secondary">— Booking</span>
+      <h2 class="font-display font-extrabold text-2xl md:text-5xl text-on-surface mt-2 md:mt-3 leading-tight">
+        <span data-content="contact_title">מוכנה <span class="accent-script text-5xl md:text-6xl">לפנק</span><br/> את הידיים שלך?</span>
       </h2>
-      <p class="text-on-surface-variant text-base md:text-lg max-w-xl mx-auto my-6" data-content="contact_lead">
+      <p class="text-on-surface-variant text-sm md:text-lg max-w-xl mx-auto my-4 md:my-6" data-content="contact_lead">
         קביעת תור פשוטה ומהירה. שלחי הודעה בוואטסאפ או באינסטגרם — אענה לך בהקדם ונקבע את התור המושלם לך.
       </p>
-      <div class="flex flex-wrap justify-center gap-3 mb-8">
-        <a href="https://wa.me/972543366077" id="whatsappLink" class="px-7 py-3 rounded-full font-semibold text-sm tracking-wider uppercase inline-flex items-center gap-2 bg-[#25D366] text-white hover:bg-[#1da851] transition shadow-[0_0_20px_rgba(37,211,102,.35)]">
+      <div class="flex flex-wrap justify-center gap-2.5 md:gap-3 mb-6 md:mb-8">
+        <a href="https://wa.me/972543366077" id="whatsappLink" class="px-5 md:px-7 py-2.5 md:py-3 rounded-full font-semibold text-xs md:text-sm tracking-wider uppercase inline-flex items-center gap-2 bg-[#25D366] text-white hover:bg-[#1da851] transition shadow-[0_0_20px_rgba(37,211,102,.35)]">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.149-.173.198-.297.297-.495.099-.198.05-.372-.025-.521-.074-.149-.669-1.612-.916-2.207-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg>
           WhatsApp
         </a>
-        <a href="https://www.instagram.com/noya2478/" id="instagramLink" target="_blank" rel="noopener" class="px-7 py-3 rounded-full font-semibold text-sm tracking-wider uppercase inline-flex items-center gap-2 text-white transition" style="background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);box-shadow:0 0 20px rgba(220,39,67,.35);">
+        <a href="https://www.instagram.com/noya2478/" id="instagramLink" target="_blank" rel="noopener" class="px-5 md:px-7 py-2.5 md:py-3 rounded-full font-semibold text-xs md:text-sm tracking-wider uppercase inline-flex items-center gap-2 text-white transition" style="background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);box-shadow:0 0 20px rgba(220,39,67,.35);">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
           Instagram
         </a>
-        <a href="tel:0543366077" class="px-7 py-3 rounded-full font-semibold text-sm tracking-wider uppercase inline-flex items-center gap-2 border border-on-surface-variant/40 text-on-surface hover:bg-surface-container-high transition">
-          <span class="material-symbols-outlined text-[18px]">call</span>
+        <a href="tel:0543366077" class="px-5 md:px-7 py-2.5 md:py-3 rounded-full font-semibold text-xs md:text-sm tracking-wider uppercase inline-flex items-center gap-2 border border-on-surface-variant/40 text-on-surface hover:bg-surface-container-high transition">
+          <span class="material-symbols-outlined text-[16px] md:text-[18px]">call</span>
           054-3366077
         </a>
       </div>
-      <div class="ornament-divider max-w-xs mx-auto"><span class="line"></span><span class="gem">✦ ✦ ✦</span><span class="line"></span></div>
-      <div class="flex flex-wrap justify-center gap-6 mt-6 text-sm text-on-surface-variant">
+      <div class="ornament-divider max-w-[12rem] md:max-w-xs mx-auto"><span class="line"></span><span class="gem">✦ ✦ ✦</span><span class="line"></span></div>
+      <div class="flex flex-wrap justify-center gap-4 md:gap-6 mt-5 md:mt-6 text-xs md:text-sm text-on-surface-variant">
         <span class="flex items-center gap-2"><span class="material-symbols-outlined text-[18px] text-secondary">place</span>ישראל</span>
         <span class="flex items-center gap-2"><span class="material-symbols-outlined text-[18px] text-secondary">schedule</span>פגישות בתיאום מראש</span>
         <a href="tel:0543366077" class="flex items-center gap-2 hover:text-primary transition"><span class="material-symbols-outlined text-[18px] text-secondary">call</span>054-3366077</a>
@@ -381,14 +410,14 @@
 </main>
 
 <!-- Footer -->
-<footer class="relative bg-surface-container-lowest border-t border-primary-rose/20 px-6 py-10 text-center">
-  <div class="flex justify-center mb-3">
-    <img src="assets/logo.jpg" alt="Noya Nails" class="h-16 w-16 rounded-xl border border-primary-rose/40 shadow-[0_0_15px_rgba(201,101,112,.4)]"/>
+<footer class="relative bg-surface-container-lowest border-t border-primary-rose/20 px-6 py-7 md:py-10 text-center">
+  <div class="flex justify-center mb-2.5">
+    <img src="assets/logo.jpg" alt="Noya Nails" class="h-12 w-12 md:h-14 md:w-14 rounded-full border border-primary-rose/40 shadow-[0_0_12px_rgba(201,101,112,.4)] object-cover"/>
   </div>
-  <div class="font-display font-bold text-primary text-lg uppercase tracking-wider">Noya Nails</div>
-  <div class="text-on-surface-variant text-sm mt-1">סטודיו לציפורניים • Velvet Venom Studio</div>
-  <div class="ornament-divider max-w-xs mx-auto my-4"><span class="line"></span><span class="gem">✦</span><span class="line"></span></div>
-  <div class="text-xs text-on-surface-variant/60">© 2026 כל הזכויות שמורות • Noya Zarfati</div>
+  <div class="font-display font-bold text-primary text-base md:text-lg uppercase tracking-wider">Noya Nails</div>
+  <div class="text-on-surface-variant text-xs md:text-sm mt-1">סטודיו לציפורניים • Velvet Venom Studio</div>
+  <div class="ornament-divider max-w-[10rem] md:max-w-xs mx-auto my-3 md:my-4"><span class="line"></span><span class="gem">✦</span><span class="line"></span></div>
+  <div class="text-[.65rem] md:text-xs text-on-surface-variant/60">© 2026 כל הזכויות שמורות • Noya Zarfati</div>
 </footer>
 
 <!-- Lightbox -->
@@ -400,25 +429,27 @@
   </div>
 </div>
 
-<!-- Mobile Bottom Nav -->
-<nav class="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-surface-container-lowest/95 backdrop-blur-md border-t-2 border-primary-rose/30 rounded-t-2xl shadow-[0_-5px_25px_rgba(0,0,0,.55)]">
-  <div class="flex justify-around items-center px-3 py-2">
-    <a href="#" class="flex flex-col items-center text-primary px-3 py-1.5 rounded-lg ring-1 ring-primary-rose/40 bg-primary-rose/10 transition">
-      <span class="material-symbols-outlined text-[22px]" style="font-variation-settings:'FILL' 1;">home</span>
-      <span class="font-display text-[10px] font-bold uppercase mt-0.5">בית</span>
-    </a>
-    <a href="#gallery" class="flex flex-col items-center text-on-surface-variant hover:text-primary transition px-3 py-1.5">
-      <span class="material-symbols-outlined text-[22px]">auto_awesome</span>
-      <span class="font-display text-[10px] font-bold uppercase mt-0.5">גלריה</span>
-    </a>
-    <a href="#pricing" class="flex flex-col items-center text-on-surface-variant hover:text-primary transition px-3 py-1.5">
-      <span class="material-symbols-outlined text-[22px]">menu_book</span>
-      <span class="font-display text-[10px] font-bold uppercase mt-0.5">מחירון</span>
-    </a>
-    <a href="#contact" class="flex flex-col items-center text-on-surface-variant hover:text-primary transition px-3 py-1.5">
-      <span class="material-symbols-outlined text-[22px]">alternate_email</span>
-      <span class="font-display text-[10px] font-bold uppercase mt-0.5">קשר</span>
-    </a>
+<!-- Mobile Bottom Nav (App-Style) -->
+<nav id="bottomNav" class="fixed bottom-0 left-0 right-0 z-50 md:hidden">
+  <div class="mx-3 mb-3 rounded-full bg-surface-container-lowest/90 backdrop-blur-xl border border-primary-rose/30 shadow-[0_-5px_25px_rgba(0,0,0,.55),0_0_20px_rgba(201,101,112,.15)] safe-bottom">
+    <div class="flex justify-around items-center px-2 py-2">
+      <a href="#top" data-target="top" class="bnav flex flex-col items-center justify-center w-14 py-1.5 rounded-full transition-all">
+        <span class="material-symbols-outlined text-[22px]">home</span>
+        <span class="font-display text-[9px] font-bold uppercase mt-0.5">בית</span>
+      </a>
+      <a href="#gallery" data-target="gallery" class="bnav flex flex-col items-center justify-center w-14 py-1.5 rounded-full transition-all">
+        <span class="material-symbols-outlined text-[22px]">auto_awesome</span>
+        <span class="font-display text-[9px] font-bold uppercase mt-0.5">גלריה</span>
+      </a>
+      <a href="#pricing" data-target="pricing" class="bnav flex flex-col items-center justify-center w-14 py-1.5 rounded-full transition-all">
+        <span class="material-symbols-outlined text-[22px]">menu_book</span>
+        <span class="font-display text-[9px] font-bold uppercase mt-0.5">מחירון</span>
+      </a>
+      <a href="#contact" data-target="contact" class="bnav flex flex-col items-center justify-center w-14 py-1.5 rounded-full transition-all">
+        <span class="material-symbols-outlined text-[22px]">chat_bubble</span>
+        <span class="font-display text-[9px] font-bold uppercase mt-0.5">קשר</span>
+      </a>
+    </div>
   </div>
 </nav>
 
@@ -590,12 +621,39 @@ document.querySelectorAll('.reveal').forEach(r => observer.observe(r));
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
     const id = a.getAttribute('href');
+    if (id === '#' || id === '#top'){
+      e.preventDefault();
+      window.scrollTo({top:0, behavior:'smooth'});
+      return;
+    }
     if (id.length > 1){
       e.preventDefault();
       document.querySelector(id)?.scrollIntoView({behavior:'smooth', block:'start'});
     }
   });
 });
+
+// Bottom-nav scroll-spy (app-style active indicator)
+const bnavLinks = document.querySelectorAll('.bnav');
+const sectionMap = {
+  gallery: document.getElementById('gallery'),
+  pricing: document.getElementById('pricing'),
+  contact: document.getElementById('contact')
+};
+function setActiveBNav(target){
+  bnavLinks.forEach(b => b.classList.toggle('active', b.dataset.target === target));
+}
+function updateBNavOnScroll(){
+  const y = window.scrollY + window.innerHeight * 0.45;
+  let active = 'top';
+  for (const [key, el] of Object.entries(sectionMap)){
+    if (el && el.offsetTop <= y) active = key;
+  }
+  if (window.scrollY < 80) active = 'top';
+  setActiveBNav(active);
+}
+window.addEventListener('scroll', updateBNavOnScroll, { passive: true });
+updateBNavOnScroll();
 
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 
