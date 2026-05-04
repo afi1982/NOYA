@@ -222,12 +222,13 @@
 <!-- Top App Bar -->
 <header id="topbar" class="nav-bar-blur z-50 border-b border-primary-rose/25 shadow-[0_2px_15px_rgba(0,0,0,.4)] transition-all safe-top flex-shrink-0">
   <div class="max-w-[1280px] mx-auto px-4 md:px-6 py-2.5 md:py-3 flex justify-between items-center gap-3">
-    <a href="#home" data-target="home" class="flex items-center gap-2.5 group">
-      <img src="assets/logo.jpg" alt="Noya Nails" class="h-9 w-9 md:h-10 md:w-10 object-cover rounded-full border border-primary-rose/50 group-hover:border-primary shadow-[0_0_10px_rgba(201,101,112,.4)] transition-all"/>
+    <a href="#home" data-target="home" class="flex items-center gap-3 group">
+      <img src="assets/logo.jpg" alt="Noya Nails" class="h-12 w-12 md:h-14 md:w-14 object-cover rounded-full border border-primary-rose/55 group-hover:border-primary shadow-[0_0_14px_rgba(201,101,112,.5)] transition-all"/>
       <span class="font-display font-black text-base md:text-xl text-primary tracking-tight uppercase italic">Noya Nails</span>
     </a>
     <nav class="hidden md:flex items-center gap-7 text-[.92rem] font-medium">
       <a href="#home" data-target="home" class="nav-link">בית</a>
+      <a href="#about" data-target="about" class="nav-link">אודות</a>
       <a href="#gallery" data-target="gallery" class="nav-link">גלריה</a>
       <a href="#pricing" data-target="pricing" class="nav-link">מחירון</a>
       <a href="#contact" data-target="contact" class="nav-link">יצירת קשר</a>
@@ -255,9 +256,9 @@
         <!-- Subtle logo medallion above the title (mobile + desktop) -->
         <div class="flex justify-center md:justify-start mb-5">
           <div class="relative inline-flex items-center justify-center">
-            <div class="absolute inset-0 rounded-full bg-primary-rose/20 blur-xl"></div>
-            <div class="absolute inset-[-6px] rounded-full border border-secondary-gold/25 ring-rotate"></div>
-            <img src="assets/logo.jpg" alt="Noya Nails" class="relative w-14 h-14 md:w-16 md:h-16 rounded-full object-cover border border-primary-rose/40 shadow-[0_0_18px_rgba(201,101,112,.45)]"/>
+            <div class="absolute inset-0 rounded-full bg-primary-rose/25 blur-xl"></div>
+            <div class="absolute inset-[-8px] rounded-full border border-secondary-gold/30 ring-rotate"></div>
+            <img src="assets/logo.jpg" alt="Noya Nails" class="relative w-20 h-20 md:w-24 md:h-24 rounded-full object-cover border border-primary-rose/45 shadow-[0_0_22px_rgba(201,101,112,.5)]"/>
           </div>
         </div>
 
@@ -316,8 +317,13 @@
     </div>
   </section>
 
+  </div><!-- /home screen -->
+
+  <!-- ═══ ABOUT SCREEN ═══ -->
+  <div class="screen" data-screen="about">
+
   <!-- About -->
-  <section id="about" class="mb-12 md:mb-16">
+  <section id="about" class="mb-4 md:mb-16">
     <div class="grid md:grid-cols-2 gap-7 md:gap-10 items-center">
       <div class="reveal">
         <span class="font-body text-[.65rem] md:text-[.72rem] tracking-[.35em] uppercase text-secondary">— Brand DNA</span>
@@ -372,7 +378,7 @@
     </div>
   </section>
 
-  </div><!-- /home screen -->
+  </div><!-- /about screen -->
 
   <!-- ═══ GALLERY SCREEN ═══ -->
   <div class="screen" data-screen="gallery">
@@ -497,10 +503,14 @@
 <!-- Mobile Bottom Nav (App-Style, true tab bar — switches screens, sits in flex layout so content can never scroll behind it) -->
 <nav id="bottomNav" class="md:hidden flex-shrink-0 bg-[#1e0f12] border-t border-primary-rose/30 shadow-[0_-4px_20px_rgba(0,0,0,.5)] safe-bottom z-50">
   <div class="px-2 pt-2">
-    <div class="flex justify-around items-center px-2 py-2">
+    <div class="flex justify-around items-center px-1 py-2">
       <a href="#home" data-target="home" class="bnav flex flex-col items-center justify-center w-14 py-1.5 rounded-full transition-all">
         <span class="material-symbols-outlined text-[22px]">home</span>
         <span class="font-display text-[9px] font-bold uppercase mt-0.5">בית</span>
+      </a>
+      <a href="#about" data-target="about" class="bnav flex flex-col items-center justify-center w-14 py-1.5 rounded-full transition-all">
+        <span class="material-symbols-outlined text-[22px]">person</span>
+        <span class="font-display text-[9px] font-bold uppercase mt-0.5">אודות</span>
       </a>
       <a href="#gallery" data-target="gallery" class="bnav flex flex-col items-center justify-center w-14 py-1.5 rounded-full transition-all">
         <span class="material-symbols-outlined text-[22px]">auto_awesome</span>
@@ -732,7 +742,8 @@ document.querySelectorAll('.reveal').forEach(r => observer.observe(r));
 
 // ═══ SPA Screen Switcher ═══
 const SCREEN_FOR_HASH = {
-  '': 'home', '#': 'home', '#top': 'home', '#home': 'home', '#about': 'home',
+  '': 'home', '#': 'home', '#top': 'home', '#home': 'home',
+  '#about': 'about',
   '#gallery': 'gallery',
   '#pricing': 'pricing', '#addons': 'pricing',
   '#contact': 'contact'
