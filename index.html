@@ -113,15 +113,27 @@
   }
   .btn-outline-gold:hover{background:rgba(228,193,147,.08);border-color:#e4c193;color:#fff;}
 
-  .tier-card{position:relative;background:linear-gradient(145deg,rgba(43,27,30,.85),rgba(24,10,13,.85));border:1px solid rgba(201,101,112,.25);transition:all .4s ease;}
-  .tier-card:hover{transform:translateY(-6px);border-color:rgba(201,101,112,.65);box-shadow:0 20px 50px -15px rgba(201,101,112,.4);}
-  .tier-card.featured{border-color:rgba(201,101,112,.55);background:linear-gradient(145deg,rgba(95,19,33,.6),rgba(43,27,30,.85));box-shadow:0 0 40px -15px rgba(201,101,112,.55);}
+  .tier-card{position:relative;background:linear-gradient(150deg,rgba(43,27,30,.92),rgba(24,10,13,.92));border:1px solid rgba(201,101,112,.22);transition:all .4s ease;display:flex;flex-direction:column;}
+  .tier-card:hover{transform:translateY(-4px);border-color:rgba(201,101,112,.55);box-shadow:0 25px 55px -15px rgba(201,101,112,.35);}
+  .tier-card.featured{border-color:rgba(201,101,112,.55);background:linear-gradient(150deg,rgba(95,19,33,.55),rgba(43,27,30,.92));box-shadow:0 0 35px -10px rgba(201,101,112,.55);}
   .tier-card.featured::before{
-    content:"מומלץ";position:absolute;top:-14px;right:50%;transform:translateX(50%);
-    background:linear-gradient(135deg,#C96570,#9b414c);color:#fff;padding:.35rem 1.2rem;border-radius:100px;
-    font-family:'Be Vietnam Pro';font-size:.7rem;letter-spacing:.18em;
-    box-shadow:0 0 15px rgba(201,101,112,.6);
+    content:"★ הכי מבוקש";position:absolute;top:-12px;right:50%;transform:translateX(50%);
+    background:linear-gradient(135deg,#C9A87C,#9b414c);color:#fff;padding:.35rem 1.1rem;border-radius:100px;
+    font-family:'Be Vietnam Pro',sans-serif;font-size:.65rem;font-weight:600;letter-spacing:.2em;white-space:nowrap;
+    box-shadow:0 4px 15px rgba(201,101,112,.5);z-index:5;
   }
+  .tier-icon{display:flex;align-items:flex-end;justify-content:center;height:60px;gap:3px;margin-bottom:.25rem;}
+  .tier-icon span{display:block;width:9px;border-radius:6px 6px 2px 2px;background:linear-gradient(to top,#C96570,#ffb2b8);box-shadow:0 0 6px rgba(201,101,112,.4);}
+  .tier-card.featured .tier-icon span{background:linear-gradient(to top,#C9A87C,#ffd9a3);box-shadow:0 0 8px rgba(201,168,124,.5);}
+
+  .price-pill{display:flex;align-items:center;justify-content:space-between;padding:.85rem 1.1rem;background:rgba(0,0,0,.25);border:1px solid rgba(201,101,112,.18);border-radius:14px;}
+  .price-pill .num{font-family:'Epilogue',serif;font-weight:800;font-size:1.6rem;color:#fff;line-height:1;}
+  .price-pill .num .cur{font-size:.7em;color:#e4c193;font-weight:600;margin-right:1px;}
+  .price-pill .lbl{font-size:.78rem;color:rgba(249,219,223,.7);letter-spacing:.06em;}
+  .tier-card.featured .price-pill{background:rgba(95,19,33,.4);border-color:rgba(201,168,124,.3);}
+
+  .tier-check{flex:0 0 18px;width:18px;height:18px;border-radius:50%;background:rgba(201,101,112,.18);border:1px solid rgba(201,101,112,.4);display:inline-flex;align-items:center;justify-content:center;color:#ffb2b8;font-size:.7rem;font-weight:bold;margin-top:2px;}
+  .tier-card.featured .tier-check{background:rgba(201,168,124,.18);border-color:rgba(201,168,124,.5);color:#e4c193;}
 
   .gallery-card{position:relative;aspect-ratio:1;border-radius:14px;overflow:hidden;cursor:pointer;
     border:1px solid rgba(201,101,112,.25);transition:all .45s ease;background:#27171a;}
@@ -333,17 +345,19 @@
   </section>
 
   <!-- Pricing -->
-  <section id="pricing" class="relative mb-12 md:mb-16 rounded-3xl border border-primary-rose/25 bg-surface-container-low px-5 py-10 md:p-12 overflow-hidden">
+  <section id="pricing" class="relative mb-12 md:mb-16 rounded-3xl border border-primary-rose/25 bg-surface-container-low px-4 py-10 md:p-12 overflow-hidden">
     <div class="absolute inset-0 lace-pattern opacity-50 pointer-events-none"></div>
     <div class="absolute -top-32 right-0 w-96 h-96 rounded-full bg-primary-rose/10 blur-3xl pointer-events-none"></div>
+    <div class="absolute -bottom-32 left-0 w-80 h-80 rounded-full bg-secondary-gold/10 blur-3xl pointer-events-none"></div>
     <div class="relative z-10">
-      <div class="text-center mb-8 md:mb-10 reveal">
+      <div class="text-center mb-10 md:mb-14 reveal">
         <span class="font-body text-[.65rem] md:text-[.72rem] tracking-[.35em] uppercase text-secondary">— Price List</span>
         <h2 class="font-display font-extrabold text-2xl md:text-5xl text-on-surface mt-2">מחירון <span class="accent-script text-5xl md:text-6xl">רשמי</span></h2>
         <div class="ornament-divider max-w-[12rem] md:max-w-xs mx-auto mt-3"><span class="line"></span><span class="gem">✦</span><span class="line"></span></div>
-        <p class="text-on-surface-variant max-w-xl mx-auto mt-3 md:mt-4 text-xs md:text-base" data-content="pricing_sub">בחרי את האורך שמתאים לך — לק ג'ל בלבד או בנייה מלאה. כל המחירים כוללים את הטיפול המלא.</p>
+        <p class="text-on-surface-variant max-w-xl mx-auto mt-3 md:mt-4 text-xs md:text-base px-2" data-content="pricing_sub">בחרי את האורך שמתאים לך — לק ג'ל בלבד או בנייה מלאה. כל המחירים כוללים את הטיפול המלא.</p>
       </div>
-      <div id="priceTiers" class="grid md:grid-cols-3 gap-4 md:gap-5"></div>
+      <div id="priceTiers" class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-6 pt-4"></div>
+      <p class="text-center text-on-surface-variant/70 text-xs mt-8 italic">* המחירים כוללים מע"מ. בנייה כוללת בניית הציפורן + לק ג'ל מלא.</p>
     </div>
   </section>
 
@@ -544,28 +558,46 @@ function renderGallery(items){
   });
 }
 
+function tierBars(idx){
+  const heights = [
+    [22,28,34,40,46],
+    [34,40,48,54,60],
+    [44,52,58,62,66]
+  ];
+  const h = heights[Math.min(idx,2)];
+  return h.map(v => `<span style="height:${v}px"></span>`).join('');
+}
+
 function renderPricing(tiers){
   const grid = document.getElementById('priceTiers');
-  grid.innerHTML = tiers.map(t => `
-    <div class="tier-card ${t.featured ? 'featured' : ''} reveal rounded-2xl p-7 md:p-8">
-      <div class="font-display font-bold text-2xl text-on-surface mb-1">${escapeHtml(t.name)}</div>
-      <div class="text-[.7rem] tracking-[.25em] uppercase text-secondary mb-6">${escapeHtml(t.len)}</div>
-      <div class="flex flex-col gap-3 pb-6 mb-6 border-b border-primary-rose/20">
-        <div class="flex justify-between items-baseline">
-          <span class="text-on-surface-variant text-sm">לק ג'ל</span>
-          <span class="font-display text-2xl text-on-surface">${t.gel}<span class="text-secondary text-sm">₪</span></span>
+  grid.innerHTML = tiers.map((t, idx) => `
+    <div class="tier-card ${t.featured ? 'featured' : ''} reveal rounded-3xl p-6 md:p-7">
+      <div class="tier-icon">${tierBars(idx)}</div>
+      <div class="text-center mb-1">
+        <div class="font-display font-bold text-2xl md:text-3xl text-on-surface">${escapeHtml(t.name)}</div>
+        <div class="text-[.65rem] tracking-[.3em] uppercase text-secondary mt-1">${escapeHtml(t.len)}</div>
+      </div>
+      <div class="ornament-divider my-5"><span class="line"></span><span class="gem">✦</span><span class="line"></span></div>
+      <div class="flex flex-col gap-2.5 mb-5">
+        <div class="price-pill">
+          <span class="lbl">לק ג'ל</span>
+          <span class="num">${t.gel}<span class="cur">₪</span></span>
         </div>
-        <div class="flex justify-between items-baseline">
-          <span class="text-on-surface-variant text-sm">בנייה</span>
-          <span class="font-display text-2xl text-on-surface">${t.build}<span class="text-secondary text-sm">₪</span></span>
+        <div class="price-pill">
+          <span class="lbl">בנייה מלאה</span>
+          <span class="num">${t.build}<span class="cur">₪</span></span>
         </div>
       </div>
-      <ul class="space-y-2">${(t.includes||[]).map(inc => `
-        <li class="flex items-start gap-2 text-sm text-on-surface-variant">
-          <span class="text-secondary mt-1.5 inline-block w-1.5 h-1.5 rounded-full bg-secondary-gold flex-shrink-0"></span>
+      <ul class="flex flex-col gap-2.5 mb-5 flex-1">${(t.includes||[]).map(inc => `
+        <li class="flex items-start gap-2.5 text-[.85rem] md:text-sm text-on-surface-variant leading-snug">
+          <span class="tier-check">✓</span>
           <span>${escapeHtml(inc)}</span>
         </li>
       `).join('')}</ul>
+      <a href="#contact" class="${t.featured ? 'btn-primary-luxe' : 'btn-outline-gold'} w-full text-center px-5 py-2.5 rounded-full text-xs font-semibold tracking-[.15em] uppercase inline-flex items-center justify-center gap-2 mt-auto">
+        <span class="material-symbols-outlined text-[16px]">spa</span>
+        קבעי תור
+      </a>
     </div>
   `).join('');
   document.querySelectorAll('.tier-card.reveal').forEach(r => observer.observe(r));
