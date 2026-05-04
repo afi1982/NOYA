@@ -238,13 +238,13 @@
 </header>
 
 <main id="appScroll" class="flex-1 overflow-y-auto overflow-x-hidden">
-  <div class="max-w-[1280px] mx-auto px-4 md:px-8 py-4 md:py-8">
+  <div class="max-w-[1280px] mx-auto px-3 md:px-8 py-3 md:py-8 min-h-full">
 
   <!-- ═══ HOME SCREEN ═══ -->
   <div class="screen active" data-screen="home">
 
-  <!-- Hero / Velvet Venom -->
-  <section class="relative overflow-hidden rounded-3xl border border-primary-rose/25 bg-surface-container-low leopard-texture px-5 py-10 md:px-12 md:py-14 mb-10 md:mb-14 shadow-[inset_0_0_60px_rgba(0,0,0,.55)]">
+  <!-- Hero / Velvet Venom — fills viewport, content centered, no scroll on home -->
+  <section class="relative overflow-hidden rounded-3xl border border-primary-rose/25 bg-surface-container-low leopard-texture p-5 md:p-12 shadow-[inset_0_0_60px_rgba(0,0,0,.55)] flex flex-col justify-center min-h-[calc(100dvh-200px)] md:min-h-0">
     <div class="absolute -top-24 -left-24 w-72 h-72 rounded-full bg-primary-rose/15 blur-3xl pointer-events-none"></div>
     <div class="absolute -bottom-24 -right-24 w-80 h-80 rounded-full bg-secondary-gold/10 blur-3xl pointer-events-none"></div>
     <span class="deco-sparkle" style="top:8%;left:12%;">✦</span>
@@ -254,47 +254,47 @@
     <div class="relative z-10 hero-grid grid md:grid-cols-[1.15fr_1fr] gap-8 md:gap-10 items-center">
       <div class="text-center md:text-right">
         <!-- Subtle logo medallion above the title (mobile + desktop) -->
-        <div class="flex justify-center md:justify-start mb-5">
+        <div class="flex justify-center md:justify-start mb-3 md:mb-5">
           <div class="relative inline-flex items-center justify-center">
             <div class="absolute inset-0 rounded-full bg-primary-rose/25 blur-xl"></div>
-            <div class="absolute inset-[-8px] rounded-full border border-secondary-gold/30 ring-rotate"></div>
-            <img src="assets/logo.jpg" alt="Noya Nails" class="relative w-20 h-20 md:w-24 md:h-24 rounded-full object-cover border border-primary-rose/45 shadow-[0_0_22px_rgba(201,101,112,.5)]"/>
+            <div class="absolute inset-[-7px] rounded-full border border-secondary-gold/30 ring-rotate"></div>
+            <img src="assets/logo.jpg" alt="Noya Nails" class="relative w-[72px] h-[72px] md:w-24 md:h-24 rounded-full object-cover border border-primary-rose/45 shadow-[0_0_20px_rgba(201,101,112,.5)]"/>
           </div>
         </div>
 
-        <span class="inline-block font-body text-[.65rem] md:text-[.72rem] tracking-[.35em] uppercase text-secondary mb-3" data-content="hero_tag">Velvet Venom • סטודיו לציפורניים</span>
-        <h1 class="font-display font-black text-3xl md:text-6xl leading-[1.08] text-on-surface mb-4">
+        <span class="inline-block font-body text-[.6rem] md:text-[.72rem] tracking-[.35em] uppercase text-secondary mb-2" data-content="hero_tag">Velvet Venom • סטודיו לציפורניים</span>
+        <h1 class="font-display font-black text-2xl md:text-6xl leading-[1.1] text-on-surface mb-3">
           <span data-content="hero_title">
             ציפורניים<br/>
-            <span class="accent-script text-6xl md:text-8xl block leading-[.65] my-1">שמספרות</span>
+            <span class="accent-script text-5xl md:text-8xl block leading-[.7] my-0.5">שמספרות</span>
             סיפור משלך
           </span>
         </h1>
-        <p class="font-body text-sm md:text-lg text-on-surface-variant max-w-xl mx-auto md:mx-0 leading-relaxed mb-6" data-content="hero_lead">
-          בניית ציפורניים ולק ג'ל ביד עדינה ומדויקת. כל סט הוא יצירה אישית — מתוכננת בקפידה כדי להתאים לסגנון, לאישיות ולאורח החיים שלך.
+        <p class="font-body text-[.85rem] md:text-lg text-on-surface-variant max-w-xl mx-auto md:mx-0 leading-snug md:leading-relaxed mb-4 md:mb-6" data-content="hero_lead">
+          בניית ציפורניים ולק ג'ל ביד עדינה ומדויקת — כל סט הוא יצירה אישית המתוכננת בקפידה לסגנון ולאישיות שלך.
         </p>
-        <div class="flex flex-wrap justify-center md:justify-start gap-2.5 mb-7">
-          <a href="#contact" data-target="contact" class="btn-primary-luxe px-5 md:px-7 py-2.5 md:py-3 rounded-full text-xs md:text-sm font-semibold tracking-wider uppercase inline-flex items-center gap-2">
+        <div class="flex flex-wrap justify-center md:justify-start gap-2 mb-4 md:mb-7">
+          <a href="#contact" data-target="contact" class="btn-primary-luxe px-5 md:px-7 py-2 md:py-3 rounded-full text-[.72rem] md:text-sm font-semibold tracking-wider uppercase inline-flex items-center gap-1.5">
             <span class="material-symbols-outlined text-[16px] md:text-[18px]">spa</span>
             לקביעת תור
           </a>
-          <a href="#pricing" data-target="pricing" class="btn-outline-gold px-5 md:px-7 py-2.5 md:py-3 rounded-full text-xs md:text-sm font-semibold tracking-wider uppercase inline-flex items-center gap-2">
+          <a href="#pricing" data-target="pricing" class="btn-outline-gold px-5 md:px-7 py-2 md:py-3 rounded-full text-[.72rem] md:text-sm font-semibold tracking-wider uppercase inline-flex items-center gap-1.5">
             <span class="material-symbols-outlined text-[16px] md:text-[18px]">menu_book</span>
             למחירון
           </a>
         </div>
-        <div class="flex flex-wrap justify-center md:justify-start gap-5 md:gap-7 pt-5 md:pt-6 border-t border-primary-rose/15">
-          <div class="border-r border-primary-rose/25 pr-3 md:pr-5">
-            <div class="font-display font-bold text-xl md:text-2xl text-primary leading-none">100%</div>
-            <div class="text-[.65rem] md:text-[.7rem] tracking-[.2em] uppercase text-on-surface-variant mt-1.5 md:mt-2">יחס אישי</div>
+        <div class="flex justify-center md:justify-start gap-3 md:gap-7 pt-3 md:pt-6 border-t border-primary-rose/15">
+          <div class="border-r border-primary-rose/25 pr-2.5 md:pr-5">
+            <div class="font-display font-bold text-base md:text-2xl text-primary leading-none">100%</div>
+            <div class="text-[.6rem] md:text-[.7rem] tracking-[.18em] uppercase text-on-surface-variant mt-1 md:mt-2">יחס אישי</div>
           </div>
-          <div class="border-r border-primary-rose/25 pr-3 md:pr-5">
-            <div class="font-display font-bold text-xl md:text-2xl text-primary leading-none">∞</div>
-            <div class="text-[.65rem] md:text-[.7rem] tracking-[.2em] uppercase text-on-surface-variant mt-1.5 md:mt-2">סגנונות</div>
+          <div class="border-r border-primary-rose/25 pr-2.5 md:pr-5">
+            <div class="font-display font-bold text-base md:text-2xl text-primary leading-none">∞</div>
+            <div class="text-[.6rem] md:text-[.7rem] tracking-[.18em] uppercase text-on-surface-variant mt-1 md:mt-2">סגנונות</div>
           </div>
-          <div class="pr-3 md:pr-5">
-            <div class="font-display font-bold text-xl md:text-2xl text-secondary leading-none">★</div>
-            <div class="text-[.65rem] md:text-[.7rem] tracking-[.2em] uppercase text-on-surface-variant mt-1.5 md:mt-2">איכות פרימיום</div>
+          <div class="pr-2.5 md:pr-5">
+            <div class="font-display font-bold text-base md:text-2xl text-secondary leading-none">★</div>
+            <div class="text-[.6rem] md:text-[.7rem] tracking-[.18em] uppercase text-on-surface-variant mt-1 md:mt-2">איכות פרימיום</div>
           </div>
         </div>
       </div>
