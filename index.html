@@ -113,27 +113,63 @@
   }
   .btn-outline-gold:hover{background:rgba(228,193,147,.08);border-color:#e4c193;color:#fff;}
 
-  .tier-card{position:relative;background:linear-gradient(150deg,rgba(43,27,30,.92),rgba(24,10,13,.92));border:1px solid rgba(201,101,112,.22);transition:all .4s ease;display:flex;flex-direction:column;}
-  .tier-card:hover{transform:translateY(-4px);border-color:rgba(201,101,112,.55);box-shadow:0 25px 55px -15px rgba(201,101,112,.35);}
-  .tier-card.featured{border-color:rgba(201,101,112,.55);background:linear-gradient(150deg,rgba(95,19,33,.55),rgba(43,27,30,.92));box-shadow:0 0 35px -10px rgba(201,101,112,.55);}
-  .tier-card.featured::before{
-    content:"★ הכי מבוקש";position:absolute;top:-12px;right:50%;transform:translateX(50%);
-    background:linear-gradient(135deg,#C9A87C,#9b414c);color:#fff;padding:.35rem 1.1rem;border-radius:100px;
-    font-family:'Be Vietnam Pro',sans-serif;font-size:.65rem;font-weight:600;letter-spacing:.2em;white-space:nowrap;
-    box-shadow:0 4px 15px rgba(201,101,112,.5);z-index:5;
+  /* Unified comparison pricing table */
+  .price-table{
+    background:linear-gradient(160deg,rgba(43,27,30,.95),rgba(24,10,13,.95));
+    border:1px solid rgba(201,101,112,.28);
+    border-radius:24px;
+    overflow:hidden;
+    box-shadow:0 25px 55px -20px rgba(0,0,0,.6),0 0 30px -10px rgba(201,101,112,.25);
   }
-  .tier-icon{display:flex;align-items:flex-end;justify-content:center;height:60px;gap:3px;margin-bottom:.25rem;}
-  .tier-icon span{display:block;width:9px;border-radius:6px 6px 2px 2px;background:linear-gradient(to top,#C96570,#ffb2b8);box-shadow:0 0 6px rgba(201,101,112,.4);}
-  .tier-card.featured .tier-icon span{background:linear-gradient(to top,#C9A87C,#ffd9a3);box-shadow:0 0 8px rgba(201,168,124,.5);}
+  .price-row{display:grid;grid-template-columns:72px 1fr 1fr 1fr;align-items:stretch;}
+  @media (min-width:480px){ .price-row{grid-template-columns:90px 1fr 1fr 1fr;} }
+  .price-row > *{padding:.85rem .25rem;text-align:center;border-bottom:1px solid rgba(201,101,112,.12);}
+  .price-row:last-child > *{border-bottom:none;}
+  .price-row .row-label{
+    text-align:right;padding:0 .65rem;font-weight:600;font-size:.78rem;color:#e4c193;
+    background:rgba(0,0,0,.28);border-left:1px solid rgba(201,101,112,.18);
+    display:flex;align-items:center;justify-content:flex-end;gap:.4rem;
+  }
+  .price-row .row-label .material-symbols-outlined{font-size:16px;color:#ffb2b8;}
 
-  .price-pill{display:flex;align-items:center;justify-content:space-between;padding:.85rem 1.1rem;background:rgba(0,0,0,.25);border:1px solid rgba(201,101,112,.18);border-radius:14px;}
-  .price-pill .num{font-family:'Epilogue',serif;font-weight:800;font-size:1.6rem;color:#fff;line-height:1;}
-  .price-pill .num .cur{font-size:.7em;color:#e4c193;font-weight:600;margin-right:1px;}
-  .price-pill .lbl{font-size:.78rem;color:rgba(249,219,223,.7);letter-spacing:.06em;}
-  .tier-card.featured .price-pill{background:rgba(95,19,33,.4);border-color:rgba(201,168,124,.3);}
+  .price-cell{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+  .price-cell .num{font-family:'Epilogue',serif;font-weight:800;font-size:1.2rem;color:#fff;line-height:1;letter-spacing:-.01em;white-space:nowrap;}
+  .price-cell .num .cur{font-size:.6em;color:#e4c193;font-weight:600;margin-right:1px;}
+  @media (min-width:480px){ .price-cell .num{font-size:1.5rem;} }
 
-  .tier-check{flex:0 0 18px;width:18px;height:18px;border-radius:50%;background:rgba(201,101,112,.18);border:1px solid rgba(201,101,112,.4);display:inline-flex;align-items:center;justify-content:center;color:#ffb2b8;font-size:.7rem;font-weight:bold;margin-top:2px;}
-  .tier-card.featured .tier-check{background:rgba(201,168,124,.18);border-color:rgba(201,168,124,.5);color:#e4c193;}
+  .price-col-featured{
+    background:linear-gradient(to bottom,rgba(95,19,33,.45),rgba(95,19,33,.18));
+    box-shadow:inset 0 0 0 1px rgba(201,168,124,.18);
+  }
+  .price-col-featured .num{color:#ffb2b8;text-shadow:0 0 12px rgba(255,178,184,.4);}
+
+  .price-header{
+    padding:.9rem .35rem .85rem;text-align:center;border-bottom:1px solid rgba(201,101,112,.18);
+    background:rgba(0,0,0,.32);
+  }
+  .price-header.col-featured{
+    background:linear-gradient(135deg,rgba(201,168,124,.22),rgba(155,65,76,.22));
+    border-bottom-color:rgba(201,168,124,.4);
+  }
+  .price-header .bars{display:flex;align-items:flex-end;justify-content:center;gap:2px;height:28px;margin-bottom:.35rem;}
+  .price-header .bars span{display:block;width:5px;border-radius:3px 3px 1px 1px;background:linear-gradient(to top,#C96570,#ffb2b8);box-shadow:0 0 4px rgba(201,101,112,.4);}
+  .price-header.col-featured .bars span{background:linear-gradient(to top,#C9A87C,#ffd9a3);box-shadow:0 0 5px rgba(201,168,124,.5);}
+  .price-header .name{font-family:'Epilogue',serif;font-weight:700;font-size:.85rem;color:#fff;line-height:1.15;word-break:keep-all;}
+  @media (min-width:480px){ .price-header .name{font-size:.95rem;} }
+  .price-header.col-featured .name{color:#ffd9a3;}
+  .price-header .star{display:inline-block;color:#C9A87C;font-size:.65rem;margin-right:2px;}
+
+  .tier-info{
+    background:linear-gradient(150deg,rgba(43,27,30,.7),rgba(24,10,13,.85));
+    border:1px solid rgba(201,101,112,.18);border-radius:16px;padding:.95rem;
+    transition:all .35s ease;
+  }
+  .tier-info.featured{border-color:rgba(201,168,124,.35);background:linear-gradient(150deg,rgba(95,19,33,.4),rgba(43,27,30,.85));}
+  .tier-info .ti-name{font-family:'Epilogue',serif;font-weight:700;color:#ffb2b8;font-size:.92rem;margin-bottom:.5rem;display:flex;align-items:center;gap:.4rem;}
+  .tier-info.featured .ti-name{color:#ffd9a3;}
+  .tier-info ul{display:flex;flex-direction:column;gap:.3rem;}
+  .tier-info li{font-size:.75rem;color:rgba(249,219,223,.75);line-height:1.3;display:flex;align-items:flex-start;gap:.4rem;}
+  .tier-info li::before{content:"✓";color:#C9A87C;font-weight:bold;flex-shrink:0;}
 
   .gallery-card{position:relative;aspect-ratio:1;border-radius:14px;overflow:hidden;cursor:pointer;
     border:1px solid rgba(201,101,112,.25);transition:all .45s ease;background:#27171a;}
@@ -345,19 +381,19 @@
   </section>
 
   <!-- Pricing -->
-  <section id="pricing" class="relative mb-12 md:mb-16 rounded-3xl border border-primary-rose/25 bg-surface-container-low px-4 py-10 md:p-12 overflow-hidden">
+  <section id="pricing" class="relative mb-12 md:mb-16 rounded-3xl border border-primary-rose/25 bg-surface-container-low px-4 py-8 md:p-10 overflow-hidden">
     <div class="absolute inset-0 lace-pattern opacity-50 pointer-events-none"></div>
     <div class="absolute -top-32 right-0 w-96 h-96 rounded-full bg-primary-rose/10 blur-3xl pointer-events-none"></div>
     <div class="absolute -bottom-32 left-0 w-80 h-80 rounded-full bg-secondary-gold/10 blur-3xl pointer-events-none"></div>
     <div class="relative z-10">
-      <div class="text-center mb-10 md:mb-14 reveal">
-        <span class="font-body text-[.65rem] md:text-[.72rem] tracking-[.35em] uppercase text-secondary">— Price List</span>
-        <h2 class="font-display font-extrabold text-2xl md:text-5xl text-on-surface mt-2">מחירון <span class="accent-script text-5xl md:text-6xl">רשמי</span></h2>
-        <div class="ornament-divider max-w-[12rem] md:max-w-xs mx-auto mt-3"><span class="line"></span><span class="gem">✦</span><span class="line"></span></div>
-        <p class="text-on-surface-variant max-w-xl mx-auto mt-3 md:mt-4 text-xs md:text-base px-2" data-content="pricing_sub">בחרי את האורך שמתאים לך — לק ג'ל בלבד או בנייה מלאה. כל המחירים כוללים את הטיפול המלא.</p>
+      <div class="text-center mb-6 md:mb-8 reveal">
+        <span class="font-body text-[.6rem] md:text-[.72rem] tracking-[.35em] uppercase text-secondary">— Price List</span>
+        <h2 class="font-display font-extrabold text-2xl md:text-5xl text-on-surface mt-1.5">מחירון <span class="accent-script text-4xl md:text-6xl">רשמי</span></h2>
+        <div class="ornament-divider max-w-[10rem] md:max-w-xs mx-auto mt-2"><span class="line"></span><span class="gem">✦</span><span class="line"></span></div>
+        <p class="text-on-surface-variant max-w-xl mx-auto mt-2 text-xs md:text-sm px-2" data-content="pricing_sub">בחרי את האורך שמתאים לך — לק ג'ל בלבד או בנייה מלאה.</p>
       </div>
-      <div id="priceTiers" class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-6 pt-4"></div>
-      <p class="text-center text-on-surface-variant/70 text-xs mt-8 italic">* המחירים כוללים מע"מ. בנייה כוללת בניית הציפורן + לק ג'ל מלא.</p>
+      <div id="priceTiers"></div>
+      <p class="text-center text-on-surface-variant/60 text-[.65rem] md:text-xs mt-5 italic">* כל המחירים כוללים מע"מ • בנייה כוללת בניית הציפורן + לק ג'ל מלא</p>
     </div>
   </section>
 
@@ -560,47 +596,71 @@ function renderGallery(items){
 
 function tierBars(idx){
   const heights = [
-    [22,28,34,40,46],
-    [34,40,48,54,60],
-    [44,52,58,62,66]
+    [10,14,16,20,22],
+    [14,18,22,24,26],
+    [18,22,24,26,28]
   ];
   const h = heights[Math.min(idx,2)];
   return h.map(v => `<span style="height:${v}px"></span>`).join('');
 }
 
 function renderPricing(tiers){
-  const grid = document.getElementById('priceTiers');
-  grid.innerHTML = tiers.map((t, idx) => `
-    <div class="tier-card ${t.featured ? 'featured' : ''} reveal rounded-3xl p-6 md:p-7">
-      <div class="tier-icon">${tierBars(idx)}</div>
-      <div class="text-center mb-1">
-        <div class="font-display font-bold text-2xl md:text-3xl text-on-surface">${escapeHtml(t.name)}</div>
-        <div class="text-[.65rem] tracking-[.3em] uppercase text-secondary mt-1">${escapeHtml(t.len)}</div>
+  const wrap = document.getElementById('priceTiers');
+  wrap.innerHTML = `
+    <div class="price-table reveal">
+      <div class="price-row">
+        <div class="row-label" style="background:rgba(0,0,0,.4);"></div>
+        ${tiers.map((t,idx)=>`
+          <div class="price-header ${t.featured?'col-featured':''}">
+            <div class="bars">${tierBars(idx)}</div>
+            <div class="name">${escapeHtml(t.name)}${t.featured?'<span class="star"> ★</span>':''}</div>
+          </div>
+        `).join('')}
       </div>
-      <div class="ornament-divider my-5"><span class="line"></span><span class="gem">✦</span><span class="line"></span></div>
-      <div class="flex flex-col gap-2.5 mb-5">
-        <div class="price-pill">
-          <span class="lbl">לק ג'ל</span>
-          <span class="num">${t.gel}<span class="cur">₪</span></span>
+      <div class="price-row">
+        <div class="row-label">
+          <span>לק ג'ל</span>
+          <span class="material-symbols-outlined">water_drop</span>
         </div>
-        <div class="price-pill">
-          <span class="lbl">בנייה מלאה</span>
-          <span class="num">${t.build}<span class="cur">₪</span></span>
-        </div>
+        ${tiers.map(t=>`
+          <div class="price-cell ${t.featured?'price-col-featured':''}">
+            <span class="num">${t.gel}<span class="cur">₪</span></span>
+          </div>
+        `).join('')}
       </div>
-      <ul class="flex flex-col gap-2.5 mb-5 flex-1">${(t.includes||[]).map(inc => `
-        <li class="flex items-start gap-2.5 text-[.85rem] md:text-sm text-on-surface-variant leading-snug">
-          <span class="tier-check">✓</span>
-          <span>${escapeHtml(inc)}</span>
-        </li>
-      `).join('')}</ul>
-      <a href="#contact" class="${t.featured ? 'btn-primary-luxe' : 'btn-outline-gold'} w-full text-center px-5 py-2.5 rounded-full text-xs font-semibold tracking-[.15em] uppercase inline-flex items-center justify-center gap-2 mt-auto">
-        <span class="material-symbols-outlined text-[16px]">spa</span>
-        קבעי תור
+      <div class="price-row">
+        <div class="row-label">
+          <span>בנייה</span>
+          <span class="material-symbols-outlined">construction</span>
+        </div>
+        ${tiers.map(t=>`
+          <div class="price-cell ${t.featured?'price-col-featured':''}">
+            <span class="num">${t.build}<span class="cur">₪</span></span>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-5">
+      ${tiers.map(t=>`
+        <div class="tier-info ${t.featured?'featured':''}">
+          <div class="ti-name">
+            <span class="material-symbols-outlined" style="font-size:16px;">${t.featured?'star':'spa'}</span>
+            ${escapeHtml(t.name)} <span class="text-[.6rem] tracking-[.18em] uppercase opacity-60">${escapeHtml(t.len)}</span>
+          </div>
+          <ul>${(t.includes||[]).map(inc=>`<li>${escapeHtml(inc)}</li>`).join('')}</ul>
+        </div>
+      `).join('')}
+    </div>
+
+    <div class="flex justify-center mt-6">
+      <a href="#contact" class="btn-primary-luxe px-7 py-3 rounded-full text-xs md:text-sm font-semibold tracking-[.18em] uppercase inline-flex items-center gap-2">
+        <span class="material-symbols-outlined text-[18px]">spa</span>
+        לקביעת תור
       </a>
     </div>
-  `).join('');
-  document.querySelectorAll('.tier-card.reveal').forEach(r => observer.observe(r));
+  `;
+  observer.observe(wrap.querySelector('.price-table'));
 }
 
 const ADDON_ICON_MAP = { "✿":"brush", "✧":"diamond", "❀":"spa", "♥":"favorite", "♡":"favorite_border" };
