@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Noya Zarfati • סטודיו לציפורניים</title>
 <meta name="description" content="נויה צרפתי - סטודיו לבניית ציפורניים ולק ג'ל. עבודות מדויקות, מחירים הוגנים, יחס אישי." />
+<link rel="icon" type="image/jpeg" href="assets/logo.jpg" />
+<link rel="apple-touch-icon" href="assets/logo.jpg" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Heebo:wght@300;400;500;700;900&family=Italianno&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
@@ -25,7 +27,9 @@ body::after{content:"";position:fixed;inset:0;background-image:url("data:image/s
 
 nav{position:fixed;top:0;right:0;left:0;z-index:100;padding:1.2rem 3rem;display:flex;justify-content:space-between;align-items:center;background:rgba(250,243,238,.85);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border-bottom:1px solid rgba(201,168,124,.15);transition:padding .3s ease;}
 nav.scrolled{padding:.8rem 3rem;}
-.nav-logo{font-family:'Italianno',cursive;font-size:2.2rem;color:var(--rose);letter-spacing:.02em;line-height:1;}
+.nav-logo{display:flex;align-items:center;line-height:1;}
+.nav-logo img{height:48px;width:auto;display:block;border-radius:8px;transition:height .3s ease;}
+nav.scrolled .nav-logo img{height:40px;}
 .nav-links{display:flex;gap:2.5rem;list-style:none;}
 .nav-links a{color:var(--ink);text-decoration:none;font-size:.92rem;font-weight:400;letter-spacing:.04em;position:relative;transition:color .25s;}
 .nav-links a::after{content:"";position:absolute;bottom:-6px;right:0;width:0;height:1px;background:var(--rose);transition:width .35s ease;}
@@ -54,18 +58,11 @@ nav.scrolled{padding:.8rem 3rem;}
 .hero-meta-item .lbl{font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(42,26,29,.6);margin-top:.4rem;display:block;}
 
 .hero-visual{position:relative;display:flex;align-items:center;justify-content:center;height:80vh;}
-.logo-frame{position:relative;width:100%;max-width:480px;aspect-ratio:3/4;display:flex;align-items:center;justify-content:center;}
+.logo-frame{position:relative;width:100%;max-width:480px;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;}
 .logo-frame::before{content:"";position:absolute;inset:5%;border-radius:50%;background:linear-gradient(135deg,var(--pink-200) 0%,var(--pink-100) 50%,var(--cream) 100%);box-shadow:var(--shadow-deep);z-index:0;}
 .logo-frame::after{content:"";position:absolute;inset:5%;border-radius:50%;border:1px solid rgba(201,168,124,.3);z-index:1;animation:spin 60s linear infinite;}
-.brand-logo{position:relative;z-index:3;text-align:center;padding:2rem;opacity:0;animation:fadeUp 1.2s .8s forwards,float 6s ease-in-out 2s infinite;}
-.brand-logo-top{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem;letter-spacing:.55em;color:var(--gold-deep);margin-bottom:.8rem;padding-right:.55em;}
-.brand-logo-name{font-family:'Italianno',cursive;font-size:clamp(4.5rem,9vw,7rem);color:var(--ink);line-height:.85;letter-spacing:.01em;}
-.brand-logo-name .first{color:var(--rose);display:block;}
-.brand-logo-name .last{display:block;font-size:.75em;margin-top:-.2em;margin-right:1.5em;}
-.brand-logo-divider{width:60%;margin:1.2rem auto;display:flex;align-items:center;justify-content:center;gap:.8rem;}
-.brand-logo-divider .line{flex:1;height:1px;background:linear-gradient(to right,transparent,var(--gold-deep),transparent);}
-.brand-logo-divider .ornament{color:var(--gold-deep);font-size:.8rem;}
-.brand-logo-bottom{font-family:'Heebo',sans-serif;font-weight:300;font-size:.72rem;letter-spacing:.45em;color:var(--ink);text-transform:uppercase;padding-right:.45em;}
+.brand-logo{position:relative;z-index:3;width:78%;aspect-ratio:1/1;border-radius:32px;overflow:hidden;box-shadow:0 30px 60px -20px rgba(107,39,55,.45),0 0 0 1px rgba(201,168,124,.25);opacity:0;animation:fadeUp 1.2s .8s forwards,float 6s ease-in-out 2s infinite;}
+.brand-logo img{width:100%;height:100%;object-fit:cover;display:block;}
 .deco-pearl{position:absolute;border-radius:50%;background:radial-gradient(circle at 30% 30%,#fff,var(--pink-200) 60%,var(--pink-300));box-shadow:inset -2px -2px 4px rgba(201,101,112,.3),0 4px 10px rgba(0,0,0,.1);z-index:2;}
 .deco-pearl.p1{width:24px;height:24px;top:8%;right:18%;animation:float 4s ease-in-out infinite;}
 .deco-pearl.p2{width:16px;height:16px;bottom:15%;left:12%;animation:float 5s ease-in-out 1s infinite;}
@@ -185,7 +182,8 @@ section{padding:7rem 5rem;position:relative;}
 .contact-info a:hover{color:var(--pink-300);}
 
 footer{padding:2.5rem 5rem;background:#1a1012;color:rgba(250,243,238,.5);text-align:center;font-size:.85rem;border-top:1px solid rgba(250,243,238,.05);position:relative;}
-footer .logo-mini{font-family:'Italianno',cursive;color:var(--pink-300);font-size:1.8rem;margin-bottom:.5rem;line-height:1;}
+footer .logo-mini{display:flex;justify-content:center;margin-bottom:.8rem;line-height:1;}
+footer .logo-mini img{height:64px;width:auto;border-radius:10px;display:block;}
 footer .admin-link{position:absolute;bottom:.8rem;left:1rem;font-size:.65rem;color:rgba(250,243,238,.2);text-decoration:none;letter-spacing:.1em;}
 footer .admin-link:hover{color:rgba(250,243,238,.5);}
 
@@ -231,7 +229,7 @@ footer .admin-link:hover{color:rgba(250,243,238,.5);}
 <body>
 
 <nav id="nav">
-  <div class="nav-logo">Noya</div>
+  <a href="#" class="nav-logo" aria-label="Noya Nails"><img src="assets/logo.jpg" alt="Noya Nails" /></a>
   <ul class="nav-links">
     <li><a href="#about">אודות</a></li>
     <li><a href="#gallery">עבודות</a></li>
@@ -268,17 +266,7 @@ footer .admin-link:hover{color:rgba(250,243,238,.5);}
   <div class="hero-visual">
     <div class="logo-frame">
       <div class="brand-logo">
-        <div class="brand-logo-top">N · A · I · L · S</div>
-        <div class="brand-logo-name">
-          <span class="first">Noya</span>
-          <span class="last">Zarfati</span>
-        </div>
-        <div class="brand-logo-divider">
-          <span class="line"></span>
-          <span class="ornament">✦</span>
-          <span class="line"></span>
-        </div>
-        <div class="brand-logo-bottom">Nail Artist</div>
+        <img src="assets/logo.jpg" alt="Noya Nails" />
       </div>
       <span class="deco-pearl p1"></span>
       <span class="deco-pearl p2"></span>
@@ -424,7 +412,7 @@ footer .admin-link:hover{color:rgba(250,243,238,.5);}
 </section>
 
 <footer>
-  <div class="logo-mini">Noya Zarfati</div>
+  <div class="logo-mini"><img src="assets/logo.jpg" alt="Noya Nails" /></div>
   <div>סטודיו לציפורניים • Nail Studio</div>
   <div style="margin-top:.8rem;font-size:.75rem;opacity:.6;">© 2026 כל הזכויות שמורות</div>
 </footer>
