@@ -213,7 +213,7 @@
   html,body{overflow-x:hidden;-webkit-overflow-scrolling:touch;}
 </style>
 </head>
-<body id="top" class="bg-background text-on-surface min-h-screen pb-32 md:pb-12 lace-pattern">
+<body id="top" class="bg-background text-on-surface min-h-screen pb-40 md:pb-12 lace-pattern">
 
 <!-- Top App Bar -->
 <header id="topbar" class="nav-bar-blur sticky top-0 z-50 border-b border-primary-rose/25 shadow-[0_2px_15px_rgba(0,0,0,.4)] transition-all safe-top">
@@ -475,9 +475,10 @@
 </div>
 
 <!-- Mobile Bottom Nav (App-Style) -->
-<div class="fixed bottom-0 left-0 right-0 z-40 h-32 pointer-events-none md:hidden bg-gradient-to-t from-background via-background/85 to-transparent"></div>
+<!-- Opaque mask: solid background below + soft fade above so no content peeks behind the nav -->
+<div class="fixed bottom-0 left-0 right-0 z-40 pointer-events-none md:hidden" style="height:140px;background:linear-gradient(to top,#1e0f12 0%,#1e0f12 70%,transparent 100%);"></div>
 <nav id="bottomNav" class="fixed bottom-0 left-0 right-0 z-50 md:hidden">
-  <div class="mx-3 mb-3 rounded-full bg-surface-container-lowest/95 backdrop-blur-xl border border-primary-rose/30 shadow-[0_-5px_25px_rgba(0,0,0,.55),0_0_20px_rgba(201,101,112,.15)] safe-bottom">
+  <div class="mx-3 mb-3 rounded-full bg-[#1e0f12] border border-primary-rose/35 shadow-[0_-4px_20px_rgba(0,0,0,.6),0_0_18px_rgba(201,101,112,.18)] safe-bottom">
     <div class="flex justify-around items-center px-2 py-2">
       <a href="#top" data-target="top" class="bnav flex flex-col items-center justify-center w-14 py-1.5 rounded-full transition-all">
         <span class="material-symbols-outlined text-[22px]">home</span>
