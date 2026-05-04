@@ -207,10 +207,14 @@
   /* App-feel touches */
   @media (max-width:768px){
     .hero-grid{grid-template-columns:1fr !important;}
-    section{scroll-margin-top:72px;}
   }
   /* Hide horizontal scroll & smooth momentum on iOS */
   html,body{overflow-x:hidden;-webkit-overflow-scrolling:touch;}
+
+  /* SPA screens — only one shows at a time */
+  .screen{display:none;animation:screenIn .35s ease;}
+  .screen.active{display:block;}
+  @keyframes screenIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
 </style>
 </head>
 <body id="top" class="bg-background text-on-surface min-h-screen pb-40 md:pb-12 lace-pattern">
@@ -218,22 +222,24 @@
 <!-- Top App Bar -->
 <header id="topbar" class="nav-bar-blur sticky top-0 z-50 border-b border-primary-rose/25 shadow-[0_2px_15px_rgba(0,0,0,.4)] transition-all safe-top">
   <div class="max-w-[1280px] mx-auto px-4 md:px-6 py-2.5 md:py-3 flex justify-between items-center gap-3">
-    <a href="#" class="flex items-center gap-2.5 group">
+    <a href="#home" data-target="home" class="flex items-center gap-2.5 group">
       <img src="assets/logo.jpg" alt="Noya Nails" class="h-9 w-9 md:h-10 md:w-10 object-cover rounded-full border border-primary-rose/50 group-hover:border-primary shadow-[0_0_10px_rgba(201,101,112,.4)] transition-all"/>
       <span class="font-display font-black text-base md:text-xl text-primary tracking-tight uppercase italic">Noya Nails</span>
     </a>
     <nav class="hidden md:flex items-center gap-7 text-[.92rem] font-medium">
-      <a href="#about" class="nav-link">אודות</a>
-      <a href="#gallery" class="nav-link">עבודות</a>
-      <a href="#pricing" class="nav-link">מחירון</a>
-      <a href="#addons" class="nav-link">תוספות</a>
-      <a href="#contact" class="nav-link">יצירת קשר</a>
+      <a href="#home" data-target="home" class="nav-link">בית</a>
+      <a href="#gallery" data-target="gallery" class="nav-link">גלריה</a>
+      <a href="#pricing" data-target="pricing" class="nav-link">מחירון</a>
+      <a href="#contact" data-target="contact" class="nav-link">יצירת קשר</a>
     </nav>
-    <a href="#contact" class="btn-primary-luxe px-4 md:px-5 py-1.5 md:py-2 rounded-full text-[.72rem] md:text-[.82rem] font-semibold tracking-wider uppercase whitespace-nowrap">קבעי תור</a>
+    <a href="#contact" data-target="contact" class="btn-primary-luxe px-4 md:px-5 py-1.5 md:py-2 rounded-full text-[.72rem] md:text-[.82rem] font-semibold tracking-wider uppercase whitespace-nowrap">קבעי תור</a>
   </div>
 </header>
 
 <main class="max-w-[1280px] mx-auto px-4 md:px-8 mt-4 md:mt-8">
+
+  <!-- ═══ HOME SCREEN ═══ -->
+  <div class="screen active" data-screen="home">
 
   <!-- Hero / Velvet Venom -->
   <section class="relative overflow-hidden rounded-3xl border border-primary-rose/25 bg-surface-container-low leopard-texture px-5 py-10 md:px-12 md:py-14 mb-10 md:mb-14 shadow-[inset_0_0_60px_rgba(0,0,0,.55)]">
@@ -266,11 +272,11 @@
           בניית ציפורניים ולק ג'ל ביד עדינה ומדויקת. כל סט הוא יצירה אישית — מתוכננת בקפידה כדי להתאים לסגנון, לאישיות ולאורח החיים שלך.
         </p>
         <div class="flex flex-wrap justify-center md:justify-start gap-2.5 mb-7">
-          <a href="#contact" class="btn-primary-luxe px-5 md:px-7 py-2.5 md:py-3 rounded-full text-xs md:text-sm font-semibold tracking-wider uppercase inline-flex items-center gap-2">
+          <a href="#contact" data-target="contact" class="btn-primary-luxe px-5 md:px-7 py-2.5 md:py-3 rounded-full text-xs md:text-sm font-semibold tracking-wider uppercase inline-flex items-center gap-2">
             <span class="material-symbols-outlined text-[16px] md:text-[18px]">spa</span>
             לקביעת תור
           </a>
-          <a href="#pricing" class="btn-outline-gold px-5 md:px-7 py-2.5 md:py-3 rounded-full text-xs md:text-sm font-semibold tracking-wider uppercase inline-flex items-center gap-2">
+          <a href="#pricing" data-target="pricing" class="btn-outline-gold px-5 md:px-7 py-2.5 md:py-3 rounded-full text-xs md:text-sm font-semibold tracking-wider uppercase inline-flex items-center gap-2">
             <span class="material-symbols-outlined text-[16px] md:text-[18px]">menu_book</span>
             למחירון
           </a>
@@ -365,8 +371,13 @@
     </div>
   </section>
 
+  </div><!-- /home screen -->
+
+  <!-- ═══ GALLERY SCREEN ═══ -->
+  <div class="screen" data-screen="gallery">
+
   <!-- Gallery -->
-  <section id="gallery" class="mb-12 md:mb-16 border-t border-primary-rose/15 pt-10 md:pt-14">
+  <section id="gallery" class="mb-4 md:mb-16">
     <div class="flex flex-wrap items-end justify-between mb-6 md:mb-8 gap-3">
       <div>
         <span class="font-body text-[.65rem] md:text-[.72rem] tracking-[.35em] uppercase text-secondary">— Portfolio</span>
@@ -377,8 +388,13 @@
     <div id="galleryGrid" class="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4"></div>
   </section>
 
+  </div><!-- /gallery screen -->
+
+  <!-- ═══ PRICING SCREEN (table + addons + treatment notes) ═══ -->
+  <div class="screen" data-screen="pricing">
+
   <!-- Pricing -->
-  <section id="pricing" class="relative mb-10 md:mb-16 rounded-3xl border border-primary-rose/25 bg-surface-container-low px-3 py-6 md:p-10 overflow-hidden">
+  <section id="pricing" class="relative mb-6 md:mb-12 rounded-3xl border border-primary-rose/25 bg-surface-container-low px-3 py-6 md:p-10 overflow-hidden">
     <div class="absolute inset-0 lace-pattern opacity-50 pointer-events-none"></div>
     <div class="absolute -top-32 right-0 w-96 h-96 rounded-full bg-primary-rose/10 blur-3xl pointer-events-none"></div>
     <div class="absolute -bottom-32 left-0 w-80 h-80 rounded-full bg-secondary-gold/10 blur-3xl pointer-events-none"></div>
@@ -418,8 +434,13 @@
     </div>
   </section>
 
+  </div><!-- /pricing screen -->
+
+  <!-- ═══ CONTACT SCREEN ═══ -->
+  <div class="screen" data-screen="contact">
+
   <!-- Contact -->
-  <section id="contact" class="relative mb-10 md:mb-12 rounded-3xl border border-primary-rose/30 overflow-hidden px-5 py-10 md:p-14 leopard-texture">
+  <section id="contact" class="relative mb-4 md:mb-12 rounded-3xl border border-primary-rose/30 overflow-hidden px-5 py-10 md:p-14 leopard-texture">
     <div class="absolute inset-0 bg-gradient-to-tr from-surface-container-low via-background to-surface-container-low"></div>
     <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(201,101,112,.25),transparent_50%)]"></div>
     <div class="relative z-10 max-w-2xl mx-auto text-center">
@@ -452,17 +473,14 @@
       </div>
     </div>
   </section>
+
+  </div><!-- /contact screen -->
+
 </main>
 
-<!-- Footer -->
-<footer class="relative bg-surface-container-lowest border-t border-primary-rose/20 px-6 py-7 md:py-10 text-center">
-  <div class="flex justify-center mb-2.5">
-    <img src="assets/logo.jpg" alt="Noya Nails" class="h-12 w-12 md:h-14 md:w-14 rounded-full border border-primary-rose/40 shadow-[0_0_12px_rgba(201,101,112,.4)] object-cover"/>
-  </div>
-  <div class="font-display font-bold text-primary text-base md:text-lg uppercase tracking-wider">Noya Nails</div>
-  <div class="text-on-surface-variant text-xs md:text-sm mt-1">סטודיו לציפורניים • Velvet Venom Studio</div>
-  <div class="ornament-divider max-w-[10rem] md:max-w-xs mx-auto my-3 md:my-4"><span class="line"></span><span class="gem">✦</span><span class="line"></span></div>
-  <div class="text-[.65rem] md:text-xs text-on-surface-variant/60">© 2026 כל הזכויות שמורות • Noya Zarfati</div>
+<!-- Mini Footer (only shows on desktop where there's no bottom nav) -->
+<footer class="hidden md:block relative bg-surface-container-lowest border-t border-primary-rose/20 px-6 py-7 text-center">
+  <div class="text-on-surface-variant text-xs">© 2026 Noya Zarfati • סטודיו לציפורניים</div>
 </footer>
 
 <!-- Lightbox -->
@@ -474,13 +492,11 @@
   </div>
 </div>
 
-<!-- Mobile Bottom Nav (App-Style) -->
-<!-- Opaque mask: solid background below + soft fade above so no content peeks behind the nav -->
-<div class="fixed bottom-0 left-0 right-0 z-40 pointer-events-none md:hidden" style="height:140px;background:linear-gradient(to top,#1e0f12 0%,#1e0f12 70%,transparent 100%);"></div>
+<!-- Mobile Bottom Nav (App-Style, true tab bar — switches screens) -->
 <nav id="bottomNav" class="fixed bottom-0 left-0 right-0 z-50 md:hidden">
   <div class="mx-3 mb-3 rounded-full bg-[#1e0f12] border border-primary-rose/35 shadow-[0_-4px_20px_rgba(0,0,0,.6),0_0_18px_rgba(201,101,112,.18)] safe-bottom">
     <div class="flex justify-around items-center px-2 py-2">
-      <a href="#top" data-target="top" class="bnav flex flex-col items-center justify-center w-14 py-1.5 rounded-full transition-all">
+      <a href="#home" data-target="home" class="bnav flex flex-col items-center justify-center w-14 py-1.5 rounded-full transition-all">
         <span class="material-symbols-outlined text-[22px]">home</span>
         <span class="font-display text-[9px] font-bold uppercase mt-0.5">בית</span>
       </a>
@@ -646,12 +662,19 @@ function renderPricing(tiers){
     </div>
 
     <div class="flex justify-center mt-5">
-      <a href="#contact" class="btn-primary-luxe px-6 py-2.5 rounded-full text-xs font-semibold tracking-[.18em] uppercase inline-flex items-center gap-2">
+      <a href="#contact" data-target="contact" class="btn-primary-luxe px-6 py-2.5 rounded-full text-xs font-semibold tracking-[.18em] uppercase inline-flex items-center gap-2">
         <span class="material-symbols-outlined text-[16px]">spa</span>
         לקביעת תור
       </a>
     </div>
   `;
+  // Re-bind newly-rendered hash links to screen switcher
+  wrap.querySelectorAll('a[data-target]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      showScreen(a.dataset.target);
+    });
+  });
   observer.observe(wrap.querySelector('.price-table'));
 }
 
@@ -702,42 +725,53 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.15 });
 document.querySelectorAll('.reveal').forEach(r => observer.observe(r));
 
+// ═══ SPA Screen Switcher ═══
+const SCREEN_FOR_HASH = {
+  '': 'home', '#': 'home', '#top': 'home', '#home': 'home', '#about': 'home',
+  '#gallery': 'gallery',
+  '#pricing': 'pricing', '#addons': 'pricing',
+  '#contact': 'contact'
+};
+const screens = document.querySelectorAll('.screen');
+const bnavLinks = document.querySelectorAll('.bnav');
+const navLinks = document.querySelectorAll('.nav-link');
+
+function showScreen(name){
+  if (!name) name = 'home';
+  let found = false;
+  screens.forEach(s => {
+    const isActive = s.dataset.screen === name;
+    if (isActive) found = true;
+    s.classList.toggle('active', isActive);
+  });
+  if (!found){ // fallback
+    document.querySelector('.screen[data-screen="home"]').classList.add('active');
+    name = 'home';
+  }
+  bnavLinks.forEach(b => b.classList.toggle('active', b.dataset.target === name));
+  navLinks.forEach(n => n.classList.toggle('active', n.dataset.target === name));
+  window.scrollTo({top:0, behavior:'instant'});
+  if (history.replaceState) history.replaceState(null, '', '#' + name);
+}
+
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
-    const id = a.getAttribute('href');
-    if (id === '#' || id === '#top'){
+    const href = a.getAttribute('href');
+    const target = a.dataset.target || SCREEN_FOR_HASH[href];
+    if (target){
       e.preventDefault();
-      window.scrollTo({top:0, behavior:'smooth'});
-      return;
-    }
-    if (id.length > 1){
-      e.preventDefault();
-      document.querySelector(id)?.scrollIntoView({behavior:'smooth', block:'start'});
+      showScreen(target);
     }
   });
 });
 
-// Bottom-nav scroll-spy (app-style active indicator)
-const bnavLinks = document.querySelectorAll('.bnav');
-const sectionMap = {
-  gallery: document.getElementById('gallery'),
-  pricing: document.getElementById('pricing'),
-  contact: document.getElementById('contact')
-};
-function setActiveBNav(target){
-  bnavLinks.forEach(b => b.classList.toggle('active', b.dataset.target === target));
-}
-function updateBNavOnScroll(){
-  const y = window.scrollY + window.innerHeight * 0.45;
-  let active = 'top';
-  for (const [key, el] of Object.entries(sectionMap)){
-    if (el && el.offsetTop <= y) active = key;
-  }
-  if (window.scrollY < 80) active = 'top';
-  setActiveBNav(active);
-}
-window.addEventListener('scroll', updateBNavOnScroll, { passive: true });
-updateBNavOnScroll();
+window.addEventListener('hashchange', () => {
+  const target = SCREEN_FOR_HASH[location.hash] || location.hash.slice(1) || 'home';
+  showScreen(target);
+});
+
+// Initial screen from URL hash
+showScreen(SCREEN_FOR_HASH[location.hash] || location.hash.slice(1) || 'home');
 
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 
