@@ -121,16 +121,16 @@
     overflow:hidden;
     box-shadow:0 25px 55px -20px rgba(0,0,0,.6),0 0 30px -10px rgba(201,101,112,.25);
   }
-  .price-row{display:grid;grid-template-columns:72px 1fr 1fr 1fr;align-items:stretch;}
-  @media (min-width:480px){ .price-row{grid-template-columns:90px 1fr 1fr 1fr;} }
+  .price-row{display:grid;grid-template-columns:88px 1fr 1fr 1fr;align-items:stretch;}
+  @media (min-width:480px){ .price-row{grid-template-columns:110px 1fr 1fr 1fr;} }
   .price-row > *{padding:.85rem .25rem;text-align:center;border-bottom:1px solid rgba(201,101,112,.12);}
   .price-row:last-child > *{border-bottom:none;}
   .price-row .row-label{
-    text-align:right;padding:0 .65rem;font-weight:600;font-size:.78rem;color:#e4c193;
+    text-align:right;padding:0 .7rem;font-weight:600;font-size:.78rem;color:#e4c193;
     background:rgba(0,0,0,.28);border-left:1px solid rgba(201,101,112,.18);
-    display:flex;align-items:center;justify-content:flex-end;gap:.4rem;
+    display:flex;align-items:center;justify-content:flex-end;gap:.45rem;white-space:nowrap;
   }
-  .price-row .row-label .material-symbols-outlined{font-size:16px;color:#ffb2b8;}
+  .price-row .row-label .material-symbols-outlined{font-size:16px;color:#ffb2b8;flex-shrink:0;}
 
   .price-cell{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;}
   .price-cell .num{font-family:'Epilogue',serif;font-weight:800;font-size:1.2rem;color:#fff;line-height:1;letter-spacing:-.01em;white-space:nowrap;}
@@ -159,17 +159,14 @@
   .price-header.col-featured .name{color:#ffd9a3;}
   .price-header .star{display:inline-block;color:#C9A87C;font-size:.65rem;margin-right:2px;}
 
-  .tier-info{
-    background:linear-gradient(150deg,rgba(43,27,30,.7),rgba(24,10,13,.85));
-    border:1px solid rgba(201,101,112,.18);border-radius:16px;padding:.95rem;
-    transition:all .35s ease;
+  .benefit-pill{
+    display:inline-flex;align-items:center;gap:.4rem;
+    padding:.45rem .75rem;
+    background:rgba(0,0,0,.3);border:1px solid rgba(201,101,112,.2);
+    border-radius:999px;font-size:.72rem;color:rgba(249,219,223,.85);
+    white-space:nowrap;
   }
-  .tier-info.featured{border-color:rgba(201,168,124,.35);background:linear-gradient(150deg,rgba(95,19,33,.4),rgba(43,27,30,.85));}
-  .tier-info .ti-name{font-family:'Epilogue',serif;font-weight:700;color:#ffb2b8;font-size:.92rem;margin-bottom:.5rem;display:flex;align-items:center;gap:.4rem;}
-  .tier-info.featured .ti-name{color:#ffd9a3;}
-  .tier-info ul{display:flex;flex-direction:column;gap:.3rem;}
-  .tier-info li{font-size:.75rem;color:rgba(249,219,223,.75);line-height:1.3;display:flex;align-items:flex-start;gap:.4rem;}
-  .tier-info li::before{content:"✓";color:#C9A87C;font-weight:bold;flex-shrink:0;}
+  .benefit-pill .material-symbols-outlined{font-size:14px;color:#C9A87C;}
 
   .gallery-card{position:relative;aspect-ratio:1;border-radius:14px;overflow:hidden;cursor:pointer;
     border:1px solid rgba(201,101,112,.25);transition:all .45s ease;background:#27171a;}
@@ -216,7 +213,7 @@
   html,body{overflow-x:hidden;-webkit-overflow-scrolling:touch;}
 </style>
 </head>
-<body id="top" class="bg-background text-on-surface min-h-screen pb-24 md:pb-12 lace-pattern">
+<body id="top" class="bg-background text-on-surface min-h-screen pb-32 md:pb-12 lace-pattern">
 
 <!-- Top App Bar -->
 <header id="topbar" class="nav-bar-blur sticky top-0 z-50 border-b border-primary-rose/25 shadow-[0_2px_15px_rgba(0,0,0,.4)] transition-all safe-top">
@@ -381,19 +378,17 @@
   </section>
 
   <!-- Pricing -->
-  <section id="pricing" class="relative mb-12 md:mb-16 rounded-3xl border border-primary-rose/25 bg-surface-container-low px-4 py-8 md:p-10 overflow-hidden">
+  <section id="pricing" class="relative mb-10 md:mb-16 rounded-3xl border border-primary-rose/25 bg-surface-container-low px-3 py-6 md:p-10 overflow-hidden">
     <div class="absolute inset-0 lace-pattern opacity-50 pointer-events-none"></div>
     <div class="absolute -top-32 right-0 w-96 h-96 rounded-full bg-primary-rose/10 blur-3xl pointer-events-none"></div>
     <div class="absolute -bottom-32 left-0 w-80 h-80 rounded-full bg-secondary-gold/10 blur-3xl pointer-events-none"></div>
     <div class="relative z-10">
-      <div class="text-center mb-6 md:mb-8 reveal">
+      <div class="text-center mb-4 md:mb-8 reveal">
         <span class="font-body text-[.6rem] md:text-[.72rem] tracking-[.35em] uppercase text-secondary">— Price List</span>
-        <h2 class="font-display font-extrabold text-2xl md:text-5xl text-on-surface mt-1.5">מחירון <span class="accent-script text-4xl md:text-6xl">רשמי</span></h2>
-        <div class="ornament-divider max-w-[10rem] md:max-w-xs mx-auto mt-2"><span class="line"></span><span class="gem">✦</span><span class="line"></span></div>
-        <p class="text-on-surface-variant max-w-xl mx-auto mt-2 text-xs md:text-sm px-2" data-content="pricing_sub">בחרי את האורך שמתאים לך — לק ג'ל בלבד או בנייה מלאה.</p>
+        <h2 class="font-display font-extrabold text-xl md:text-5xl text-on-surface mt-1">מחירון <span class="accent-script text-3xl md:text-6xl">רשמי</span></h2>
       </div>
       <div id="priceTiers"></div>
-      <p class="text-center text-on-surface-variant/60 text-[.65rem] md:text-xs mt-5 italic">* כל המחירים כוללים מע"מ • בנייה כוללת בניית הציפורן + לק ג'ל מלא</p>
+      <p class="text-center text-on-surface-variant/60 text-[.6rem] md:text-xs mt-3 md:mt-5 italic px-3">* המחירים כוללים מע"מ • בנייה = בניית ציפורן + לק ג'ל מלא</p>
     </div>
   </section>
 
@@ -480,8 +475,9 @@
 </div>
 
 <!-- Mobile Bottom Nav (App-Style) -->
+<div class="fixed bottom-0 left-0 right-0 z-40 h-32 pointer-events-none md:hidden bg-gradient-to-t from-background via-background/85 to-transparent"></div>
 <nav id="bottomNav" class="fixed bottom-0 left-0 right-0 z-50 md:hidden">
-  <div class="mx-3 mb-3 rounded-full bg-surface-container-lowest/90 backdrop-blur-xl border border-primary-rose/30 shadow-[0_-5px_25px_rgba(0,0,0,.55),0_0_20px_rgba(201,101,112,.15)] safe-bottom">
+  <div class="mx-3 mb-3 rounded-full bg-surface-container-lowest/95 backdrop-blur-xl border border-primary-rose/30 shadow-[0_-5px_25px_rgba(0,0,0,.55),0_0_20px_rgba(201,101,112,.15)] safe-bottom">
     <div class="flex justify-around items-center px-2 py-2">
       <a href="#top" data-target="top" class="bnav flex flex-col items-center justify-center w-14 py-1.5 rounded-full transition-all">
         <span class="material-symbols-outlined text-[22px]">home</span>
@@ -619,8 +615,8 @@ function renderPricing(tiers){
       </div>
       <div class="price-row">
         <div class="row-label">
-          <span>לק ג'ל</span>
           <span class="material-symbols-outlined">water_drop</span>
+          <span>לק ג'ל</span>
         </div>
         ${tiers.map(t=>`
           <div class="price-cell ${t.featured?'price-col-featured':''}">
@@ -630,8 +626,8 @@ function renderPricing(tiers){
       </div>
       <div class="price-row">
         <div class="row-label">
-          <span>בנייה</span>
           <span class="material-symbols-outlined">construction</span>
+          <span>בנייה</span>
         </div>
         ${tiers.map(t=>`
           <div class="price-cell ${t.featured?'price-col-featured':''}">
@@ -641,21 +637,16 @@ function renderPricing(tiers){
       </div>
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-5">
-      ${tiers.map(t=>`
-        <div class="tier-info ${t.featured?'featured':''}">
-          <div class="ti-name">
-            <span class="material-symbols-outlined" style="font-size:16px;">${t.featured?'star':'spa'}</span>
-            ${escapeHtml(t.name)} <span class="text-[.6rem] tracking-[.18em] uppercase opacity-60">${escapeHtml(t.len)}</span>
-          </div>
-          <ul>${(t.includes||[]).map(inc=>`<li>${escapeHtml(inc)}</li>`).join('')}</ul>
-        </div>
-      `).join('')}
+    <div class="flex flex-wrap justify-center gap-2 mt-4">
+      <span class="benefit-pill"><span class="material-symbols-outlined">check_circle</span>הכנת ציפורן</span>
+      <span class="benefit-pill"><span class="material-symbols-outlined">check_circle</span>ליטוש מקצועי</span>
+      <span class="benefit-pill"><span class="material-symbols-outlined">check_circle</span>לק ג'ל פרימיום</span>
+      <span class="benefit-pill"><span class="material-symbols-outlined">check_circle</span>פיניש מבריק</span>
     </div>
 
-    <div class="flex justify-center mt-6">
-      <a href="#contact" class="btn-primary-luxe px-7 py-3 rounded-full text-xs md:text-sm font-semibold tracking-[.18em] uppercase inline-flex items-center gap-2">
-        <span class="material-symbols-outlined text-[18px]">spa</span>
+    <div class="flex justify-center mt-5">
+      <a href="#contact" class="btn-primary-luxe px-6 py-2.5 rounded-full text-xs font-semibold tracking-[.18em] uppercase inline-flex items-center gap-2">
+        <span class="material-symbols-outlined text-[16px]">spa</span>
         לקביעת תור
       </a>
     </div>
