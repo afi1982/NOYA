@@ -217,10 +217,10 @@
   @keyframes screenIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
 </style>
 </head>
-<body id="top" class="bg-background text-on-surface min-h-screen pb-40 md:pb-12 lace-pattern">
+<body id="top" class="bg-background text-on-surface lace-pattern h-[100dvh] flex flex-col overflow-hidden">
 
 <!-- Top App Bar -->
-<header id="topbar" class="nav-bar-blur sticky top-0 z-50 border-b border-primary-rose/25 shadow-[0_2px_15px_rgba(0,0,0,.4)] transition-all safe-top">
+<header id="topbar" class="nav-bar-blur z-50 border-b border-primary-rose/25 shadow-[0_2px_15px_rgba(0,0,0,.4)] transition-all safe-top flex-shrink-0">
   <div class="max-w-[1280px] mx-auto px-4 md:px-6 py-2.5 md:py-3 flex justify-between items-center gap-3">
     <a href="#home" data-target="home" class="flex items-center gap-2.5 group">
       <img src="assets/logo.jpg" alt="Noya Nails" class="h-9 w-9 md:h-10 md:w-10 object-cover rounded-full border border-primary-rose/50 group-hover:border-primary shadow-[0_0_10px_rgba(201,101,112,.4)] transition-all"/>
@@ -236,7 +236,8 @@
   </div>
 </header>
 
-<main class="max-w-[1280px] mx-auto px-4 md:px-8 mt-4 md:mt-8">
+<main id="appScroll" class="flex-1 overflow-y-auto overflow-x-hidden">
+  <div class="max-w-[1280px] mx-auto px-4 md:px-8 py-4 md:py-8">
 
   <!-- ═══ HOME SCREEN ═══ -->
   <div class="screen active" data-screen="home">
@@ -476,10 +477,11 @@
 
   </div><!-- /contact screen -->
 
+  </div><!-- /max-width wrap -->
 </main>
 
 <!-- Mini Footer (only shows on desktop where there's no bottom nav) -->
-<footer class="hidden md:block relative bg-surface-container-lowest border-t border-primary-rose/20 px-6 py-7 text-center">
+<footer class="hidden md:block flex-shrink-0 relative bg-surface-container-lowest border-t border-primary-rose/20 px-6 py-4 text-center">
   <div class="text-on-surface-variant text-xs">© 2026 Noya Zarfati • סטודיו לציפורניים</div>
 </footer>
 
@@ -492,9 +494,9 @@
   </div>
 </div>
 
-<!-- Mobile Bottom Nav (App-Style, true tab bar — switches screens) -->
-<nav id="bottomNav" class="fixed bottom-0 left-0 right-0 z-50 md:hidden">
-  <div class="mx-3 mb-3 rounded-full bg-[#1e0f12] border border-primary-rose/35 shadow-[0_-4px_20px_rgba(0,0,0,.6),0_0_18px_rgba(201,101,112,.18)] safe-bottom">
+<!-- Mobile Bottom Nav (App-Style, true tab bar — switches screens, sits in flex layout so content can never scroll behind it) -->
+<nav id="bottomNav" class="md:hidden flex-shrink-0 bg-[#1e0f12] border-t border-primary-rose/30 shadow-[0_-4px_20px_rgba(0,0,0,.5)] safe-bottom z-50">
+  <div class="px-2 pt-2">
     <div class="flex justify-around items-center px-2 py-2">
       <a href="#home" data-target="home" class="bnav flex flex-col items-center justify-center w-14 py-1.5 rounded-full transition-all">
         <span class="material-symbols-outlined text-[22px]">home</span>
@@ -701,17 +703,20 @@ function openLightbox(src, caption){
   document.getElementById('lightboxImg').src = src;
   document.getElementById('lightboxCaption').textContent = caption || '';
   lb.classList.add('open');
-  document.body.style.overflow = 'hidden';
+  const s = document.getElementById('appScroll');
+  if (s) s.style.overflow = 'hidden';
 }
 function closeLightbox(e){
   if (e && e.target.closest('.lightbox-content') && !e.target.classList.contains('lightbox-close')) return;
   document.getElementById('lightbox').classList.remove('open');
-  document.body.style.overflow = '';
+  const s = document.getElementById('appScroll');
+  if (s) s.style.overflow = '';
 }
 
 const topbar = document.getElementById('topbar');
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 30) topbar.classList.add('scrolled');
+const appScroll = document.getElementById('appScroll');
+appScroll?.addEventListener('scroll', () => {
+  if (appScroll.scrollTop > 30) topbar.classList.add('scrolled');
   else topbar.classList.remove('scrolled');
 });
 
@@ -750,7 +755,8 @@ function showScreen(name){
   }
   bnavLinks.forEach(b => b.classList.toggle('active', b.dataset.target === name));
   navLinks.forEach(n => n.classList.toggle('active', n.dataset.target === name));
-  window.scrollTo({top:0, behavior:'instant'});
+  const scroller = document.getElementById('appScroll');
+  if (scroller) scroller.scrollTop = 0;
   if (history.replaceState) history.replaceState(null, '', '#' + name);
 }
 
